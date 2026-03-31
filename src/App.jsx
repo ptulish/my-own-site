@@ -4,8 +4,9 @@ import MainLayout from './components/layout/MainLayout';
 import Hero from "./components/sections/Hero.jsx";
 import HomePage from "./components/layout/HomePage.jsx";
 import PortfolioPage from "./components/layout/PortfolioPage.jsx";
+import PathPage from "./components/layout/PathPage.jsx";
+import StoryPage from "./components/layout/StoryPage.jsx";
 
-const Path = () => <h1 className="text-4xl font-bold mt-10">Профессиональный путь</h1>;
 const Story = () => <h1 className="text-4xl font-bold mt-10">Моя личная история</h1>;
 
 const router = createBrowserRouter([
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/hero", element: <Hero /> },
       { path: "/portfolio", element: <PortfolioPage /> },
-      { path: "/path", element: <Path /> },
-      { path: "/story", element: <Story /> },
+      { path: "/path", element: <PathPage /> },
+      { path: "/story", element: <StoryPage /> },
     ],
   },
 ]);

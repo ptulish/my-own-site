@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ArrowRight, Code2, Sparkles, Layers3 } from 'lucide-react';
 
 const PortfolioTeaser = () => {
     const { t } = useTranslation();
@@ -12,7 +13,8 @@ const PortfolioTeaser = () => {
             desc: t('portfolio_teaser.project1_desc'),
             tags: ['React', 'Complex UI', 'State Management'],
             github: 'https://github.com/ptulish/educore-website',
-            bgGradient: 'from-blue-500 to-indigo-600',
+            bgGradient: 'from-blue-500 via-cyan-500 to-indigo-700',
+            badge: t('portfolio_teaser.project1_badge')
         },
         {
             id: 2,
@@ -20,100 +22,149 @@ const PortfolioTeaser = () => {
             desc: t('portfolio_teaser.project2_desc'),
             tags: ['React', 'Tailwind v4', 'Architecture'],
             github: 'https://github.com/ptulish/website-template',
-            bgGradient: 'from-emerald-400 to-teal-600',
+            bgGradient: 'from-emerald-400 via-teal-500 to-cyan-700',
+            badge: t('portfolio_teaser.project2_badge')
         }
     ];
 
+    const featuredProject = projects[0];
+    const secondaryProject = projects[1];
+
     return (
-        // Фон секции теперь bg-bg-base, как и везде
-        <section className="py-16 md:py-20 bg-bg-base relative overflow-hidden">
-            <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 max-w-7xl mx-auto">
+        <section className="relative overflow-hidden bg-bg-base py-20 md:py-24">
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-[6%] top-16 h-72 w-72 rounded-full bg-primary/8 blur-3xl" />
+                <div className="absolute right-[8%] bottom-10 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
+            </div>
 
-                {/* Большая белая карточка-контейнер для поддержания единого стиля */}
-                <div className="bg-white rounded-3xl p-8 md:p-16 border border-secondary/10 shadow-xl shadow-slate-200/50">
-
-                    {/* Заголовок секции */}
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                        <div className="max-w-2xl">
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-text-main mb-4">
-                                {t('portfolio_teaser.section_title')}
-                            </h2>
-                            <p className="text-xl text-text-muted">
-                                {t('portfolio_teaser.section_subtitle')}
-                            </p>
+            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12">
+                {/* Header */}
+                <div className="mb-12 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
+                    <div className="max-w-3xl">
+                        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur-md">
+                            <Sparkles className="h-4 w-4" />
+                            {t('portfolio_teaser.badge')}
                         </div>
 
-                        {/* Кнопка перехода в полное портфолио для десктопа */}
-                        <Link
-                            to="/portfolio"
-                            className="hidden md:inline-flex items-center text-primary font-semibold hover:text-primary-hover transition-colors group"
-                        >
-                            {t('portfolio_teaser.see_all_button')}
-                            <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-                        </Link>
+                        <h2 className="mb-4 text-3xl font-extrabold text-text-main md:text-5xl">
+                            {t('portfolio_teaser.section_title')}
+                        </h2>
+
+                        <p className="text-lg leading-relaxed text-text-muted md:text-xl">
+                            {t('portfolio_teaser.section_subtitle')}
+                        </p>
                     </div>
 
-                    {/* Сетка проектов (2 колонки) */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {projects.map((project) => (
-                            <div
-                                key={project.id}
-                                // Внутренние карточки проектов теперь на сером фоне bg-bg-base для контраста с белым контейнером
-                                className="group flex flex-col bg-bg-base rounded-2xl overflow-hidden border border-secondary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-md"
-                            >
-                                {/* Блок изображения */}
-                                <div className="relative h-64 sm:h-80 overflow-hidden bg-slate-100">
-                                    {/* Заглушка вместо картинки */}
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient} opacity-90 group-hover:scale-105 transition-transform duration-500`}></div>
+                    <Link
+                        to="/portfolio"
+                        className="inline-flex items-center gap-2 self-start rounded-2xl border border-secondary/20 bg-white/75 px-6 py-3 text-sm font-semibold text-text-main shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:bg-primary-light hover:text-primary md:self-auto"
+                    >
+                        {t('portfolio_teaser.see_all_button')}
+                        <ArrowRight className="h-4 w-4" />
+                    </Link>
+                </div>
 
-                                    {/* Оверлей при наведении */}
-                                    <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="px-6 py-2 bg-white text-slate-900 rounded-full font-medium hover:bg-primary-light transition-colors"
-                                        >
-                                            {t('portfolio_teaser.view_github')}
-                                        </a>
+                {/* Layout */}
+                <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+                    {/* Featured project */}
+                    <article className="group overflow-hidden rounded-[2rem] border border-white/40 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)]">
+                        <div className={`relative min-h-[320px] overflow-hidden bg-gradient-to-br ${featuredProject.bgGradient} p-8 md:min-h-[380px] md:p-10`}>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.14),transparent_30%)]" />
+
+                            <div className="relative z-10 flex h-full flex-col justify-between">
+                                <div className="flex items-start justify-between gap-4">
+                                    <span className="inline-flex rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                                        {featuredProject.badge}
+                                    </span>
+
+                                    <div className="rounded-2xl border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md">
+                                        <Layers3 className="h-5 w-5" />
                                     </div>
                                 </div>
 
-                                {/* Описание проекта */}
-                                <div className="p-8 flex flex-col flex-1">
-                                    <h3 className="text-2xl font-bold text-text-main mb-3 group-hover:text-primary transition-colors">
-                                        {project.title}
+                                <div className="max-w-2xl">
+                                    <h3 className="mb-4 text-3xl font-extrabold leading-tight text-white md:text-5xl">
+                                        {featuredProject.title}
                                     </h3>
-                                    <p className="text-text-muted mb-6 flex-1">
-                                        {project.desc}
-                                    </p>
 
-                                    {/* Теги технологий */}
-                                    <div className="flex flex-wrap gap-2 mt-auto">
-                                        {project.tags.map((tag, index) => (
-                                            <span
-                                                key={index}
-                                                // Теги сделаны белыми, чтобы выделяться на сером фоне карточки
-                                                className="px-3 py-1 text-xs font-medium text-secondary-dark bg-white border border-secondary/10 rounded-full"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                                    <p className="max-w-xl text-sm leading-relaxed text-white/85 md:text-base">
+                                        {featuredProject.desc}
+                                    </p>
+                                </div>
+
+                                <div className="mt-8 flex flex-wrap gap-2">
+                                    {featuredProject.tags.map((tag, index) => (
+                                        <span
+                                            key={index}
+                                            className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
 
-                    {/* Кнопка для мобилок */}
-                    <div className="mt-10 text-center md:hidden">
-                        <Link
-                            to="/portfolio"
-                            className="inline-flex px-8 py-3 bg-primary-light text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-colors"
-                        >
-                            {t('portfolio_teaser.see_all_button')}
-                        </Link>
-                    </div>
+                        <div className="flex items-center justify-between gap-4 p-6">
+                            <p className="max-w-xl text-sm leading-relaxed text-text-muted">
+                                {t('portfolio_teaser.featured_note')}
+                            </p>
+
+                            <a
+                                href={featuredProject.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover"
+                            >
+                                <Code2 className="h-4 w-4" />
+                                {t('portfolio_teaser.view_github')}
+                            </a>
+                        </div>
+                    </article>
+
+                    {/* Secondary project */}
+                    <article className="group flex flex-col overflow-hidden rounded-[2rem] border border-white/40 bg-white/70 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.10)]">
+                        <div className={`relative h-64 overflow-hidden bg-gradient-to-br ${secondaryProject.bgGradient} p-6`}>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.35),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.12),transparent_30%)]" />
+
+                            <div className="relative z-10 flex h-full flex-col justify-between">
+                                <span className="inline-flex w-fit rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                                    {secondaryProject.badge}
+                                </span>
+
+                                <h3 className="text-2xl font-bold leading-tight text-white md:text-3xl">
+                                    {secondaryProject.title}
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-1 flex-col p-6">
+                            <p className="mb-6 text-base leading-relaxed text-text-muted">
+                                {secondaryProject.desc}
+                            </p>
+
+                            <div className="mb-6 flex flex-wrap gap-2">
+                                {secondaryProject.tags.map((tag, index) => (
+                                    <span
+                                        key={index}
+                                        className="rounded-full border border-primary/10 bg-primary/5 px-3 py-1.5 text-xs font-semibold text-primary"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <a
+                                href={secondaryProject.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-hover"
+                            >
+                                <Code2 className="h-4 w-4" />
+                                {t('portfolio_teaser.view_github')}
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>

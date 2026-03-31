@@ -1,114 +1,161 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Mail, Send, Sparkles, ArrowRight } from 'lucide-react';
 
 const ContactCTA = () => {
     const { t } = useTranslation();
 
-    return (
-        <section className="py-16 md:py-20 bg-bg-base relative overflow-hidden">
-            <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 max-w-7xl mx-auto">
-                <div className="bg-white rounded-3xl p-8 md:p-16 border border-secondary/10 shadow-xl shadow-slate-200/50">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    const contactItems = [
+        {
+            id: 1,
+            href: `mailto:${t('contact.email')}`,
+            icon: <Mail className="h-5 w-5" />,
+            label: t('contact.direct_email_label'),
+            value: t('contact.email')
+        },
+        {
+            id: 2,
+            href: 'https://t.me/ptulish',
+            icon: <Send className="h-5 w-5" />,
+            label: t('contact.direct_telegram_label'),
+            value: t('contact.telegram')
+        }
+    ];
 
-                        {/* Левая колонка */}
-                        <div>
-                            <h2 className="text-4xl md:text-5xl font-extrabold text-text-main mb-6">
+    return (
+        <section className="relative overflow-hidden bg-bg-base py-20 md:py-24">
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-[8%] top-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+                <div className="absolute right-[8%] bottom-10 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
+            </div>
+
+            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12">
+                <div className="overflow-hidden rounded-[2rem] border border-white/40 bg-white/70 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl md:p-12 xl:p-16">
+                    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] xl:gap-16">
+                        {/* Left */}
+                        <div className="flex flex-col justify-center">
+                            <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
+                                <Sparkles className="h-4 w-4" />
+                                {t('contact.badge')}
+                            </div>
+
+                            <h2 className="mb-6 max-w-lg text-2xl font-extrabold leading-[1.05] text-text-main md:text-3xl xl:text-5xl">
                                 {t('contact.title')}
                             </h2>
-                            <p className="text-xl text-text-muted mb-10 leading-relaxed">
+
+                            <p className="mb-10 max-w-xl text-lg leading-relaxed text-text-muted md:text-xl">
                                 {t('contact.subtitle')}
                             </p>
 
-                            <div className="space-y-6">
-                                <p className="text-sm font-semibold text-secondary uppercase tracking-wider">
-                                    {t('contact.direct_contact')}
-                                </p>
+                            <div className="space-y-4">
+                                {contactItems.map((item) => (
+                                    <a
+                                        key={item.id}
+                                        href={item.href}
+                                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                                        rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                                        className="group flex items-center gap-4 rounded-[1.5rem] border border-primary/10 bg-bg-base/80 px-5 py-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-[0_12px_30px_rgba(15,23,42,0.08)]"
+                                    >
+                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                                            {item.icon}
+                                        </div>
 
-                                {/* Почта */}
-                                <a href={`mailto:${t('contact.email')}`} className="flex items-center gap-4 text-text-main hover:text-primary transition-colors group">
-                                    <div className="w-12 h-12 bg-primary-light text-primary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                        </svg>
-                                    </div>
-                                    <span className="text-lg font-medium">{t('contact.email')}</span>
-                                </a>
+                                        <div className="min-w-0">
+                                            <p className="text-sm font-semibold text-primary">
+                                                {item.label}
+                                            </p>
+                                            <p className="truncate text-base font-medium text-text-main md:text-lg">
+                                                {item.value}
+                                            </p>
+                                        </div>
 
-                                {/* Telegram */}
-                                <a href="https://t.me/ptulish" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-text-main hover:text-primary transition-colors group">
-                                    <div className="w-12 h-12 bg-primary-light text-primary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.94z"/>
-                                        </svg>
-                                    </div>
-                                    <span className="text-lg font-medium">{t('contact.telegram')}</span>
-                                </a>
+                                        <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-text-muted transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
+                                    </a>
+                                ))}
                             </div>
                         </div>
 
-                        {/* Правая колонка с формой для NETLIFY */}
-                        <div className="bg-bg-base rounded-2xl p-8 border border-secondary/10">
-                            {/* Главные атрибуты для Netlify: name, data-netlify, action */}
-                            {/* Обратите внимание на action="/" и скрытый инпут form-name */}
-                            <form name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" className="space-y-6">
+                        {/* Right */}
+                        <div className="relative">
+                            <div className="relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-br from-white to-bg-base p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] md:p-8">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(1,105,111,0.06),transparent_35%)]" />
 
-                                {/* Обязательное скрытое поле для React-приложений */}
-                                <input type="hidden" name="form-name" value="contact" />
+                                <div className="relative z-10">
+                                    <div className="mb-6">
+                                        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                                            {t('contact.form_badge')}
+                                        </p>
+                                        <h3 className="text-2xl font-bold text-text-main md:text-3xl">
+                                            {t('contact.form_title')}
+                                        </h3>
+                                    </div>
 
-                                {/* Защита от ботов */}
-                                <p className="hidden" style={{ display: 'none' }}>
-                                    <label>Не заполняйте это: <input name="bot-field" /></label>
-                                </p>
+                                    <form
+                                        name="contact"
+                                        method="POST"
+                                        action="/"
+                                        data-netlify="true"
+                                        netlify-honeypot="bot-field"
+                                        className="space-y-5"
+                                    >
+                                        <input type="hidden" name="form-name" value="contact" />
 
-                                <div>
-                                    <label className="block text-sm font-medium text-text-main mb-2">
-                                        {t('contact.form_name')}
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="name" // ОБЯЗАТЕЛЬНО
-                                        required
-                                        className="w-full px-4 py-3 rounded-xl bg-white border border-secondary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
-                                        placeholder={t('contact.placeholder_name')}
-                                    />
+                                        <p className="hidden" style={{ display: 'none' }}>
+                                            <label>
+                                                <input name="bot-field" />
+                                            </label>
+                                        </p>
+
+                                        <div>
+                                            <label className="mb-2 block text-sm font-semibold text-text-main">
+                                                {t('contact.form_name')}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                required
+                                                placeholder={t('contact.placeholder_name')}
+                                                className="w-full rounded-2xl border border-secondary/15 bg-white/90 px-4 py-3.5 text-text-main outline-none transition-all duration-300 placeholder:text-text-muted/70 focus:border-primary focus:ring-4 focus:ring-primary/10"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="mb-2 block text-sm font-semibold text-text-main">
+                                                {t('contact.form_email')}
+                                            </label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                required
+                                                placeholder={t('contact.placeholder_email')}
+                                                className="w-full rounded-2xl border border-secondary/15 bg-white/90 px-4 py-3.5 text-text-main outline-none transition-all duration-300 placeholder:text-text-muted/70 focus:border-primary focus:ring-4 focus:ring-primary/10"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="mb-2 block text-sm font-semibold text-text-main">
+                                                {t('contact.form_message')}
+                                            </label>
+                                            <textarea
+                                                name="message"
+                                                required
+                                                rows="5"
+                                                placeholder={t('contact.placeholder_message')}
+                                                className="w-full resize-none rounded-2xl border border-secondary/15 bg-white/90 px-4 py-3.5 text-text-main outline-none transition-all duration-300 placeholder:text-text-muted/70 focus:border-primary focus:ring-4 focus:ring-primary/10"
+                                            />
+                                        </div>
+
+                                        <button
+                                            type="submit"
+                                            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-base font-bold text-white shadow-[0_16px_40px_rgba(1,105,111,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover"
+                                        >
+                                            {t('contact.submit_button')}
+                                            <ArrowRight className="h-5 w-5" />
+                                        </button>
+                                    </form>
                                 </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-text-main mb-2">
-                                        {t('contact.form_email')}
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email" // ОБЯЗАТЕЛЬНО
-                                        required
-                                        className="w-full px-4 py-3 rounded-xl bg-white border border-secondary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
-                                        placeholder={t('contact.placeholder_email')}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-text-main mb-2">
-                                        {t('contact.form_message')}
-                                    </label>
-                                    <textarea
-                                        name="message" // ОБЯЗАТЕЛЬНО
-                                        required
-                                        rows="4"
-                                        className="w-full px-4 py-3 rounded-xl bg-white border border-secondary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
-                                        placeholder={t('contact.placeholder_message')}
-                                    ></textarea>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="w-full py-4 bg-primary hover:bg-primary-hover text-white rounded-xl font-bold text-lg transition-all active:scale-95 shadow-md hover:shadow-primary/30"
-                                >
-                                    {t('contact.submit_button')}
-                                </button>
-                            </form>
-
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
