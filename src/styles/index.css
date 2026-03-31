@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+
+/* Расширяем стандартную тему Tailwind нашими цветами */
+@theme {
+    /* Главные цвета (Кнопки, логотип, важные акценты) */
+    --color-primary: rgb(0, 135, 149);       /* Синий (tailwind blue-600) */
+    --color-primary-hover: #1d4ed8; /* Темно-синий для ховера (blue-700) */
+    --color-primary-light: #eff6ff; /* Очень светлый синий для фонов (blue-50) */
+
+    /* Вторичные цвета (Иконки, карточки, границы) */
+    --color-secondary: #64748b;     /* Серый (slate-500) */
+    --color-secondary-dark: #334155;/* Темно-серый (slate-700) */
+
+    /* Акцентный цвет (Бейджи, выделение важных деталей) */
+    --color-accent: #10b981;        /* Изумрудный (emerald-500) */
+
+    /* Фоны и Текст */
+    --color-bg-base: #f8fafc;       /* Цвет фона всего сайта (slate-50) */
+    --color-bg-card: #ffffff;       /* Цвет фона карточек проектов */
+    --color-text-main: #0f172a;     /* Главный текст (slate-900) */
+    --color-text-muted: #475569;    /* Второстепенный текст (slate-600) */
+}
+
+/* Применяем глобальные цвета к body */
+@layer base {
+    body {
+        background-color: var(--color-bg-base);
+        color: var(--color-text-main);
+    }
+}
