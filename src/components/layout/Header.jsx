@@ -8,7 +8,8 @@ const Header = () => {
     const { t, i18n } = useTranslation();
     const [isLangOpen, setIsLangOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const langRef = useRef(null);
+    const desktopLangRef = useRef(null);
+    const mobileLangRef = useRef(null);
 
     const languages = [
         { code: 'ru', label: 'RU', full: 'Русский' },
@@ -29,7 +30,13 @@ const Header = () => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (langRef.current && !langRef.current.contains(event.target)) {
+            const clickedInsideDesktop =
+                desktopLangRef.current && desktopLangRef.current.contains(event.target);
+
+            const clickedInsideMobile =
+                mobileLangRef.current && mobileLangRef.current.contains(event.target);
+
+            if (!clickedInsideDesktop && !clickedInsideMobile) {
                 setIsLangOpen(false);
             }
         };
@@ -41,11 +48,11 @@ const Header = () => {
             }
         };
 
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('click', handleClickOutside);
         document.addEventListener('keydown', handleEscape);
 
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('click', handleClickOutside);
             document.removeEventListener('keydown', handleEscape);
         };
     }, []);
@@ -106,7 +113,7 @@ const Header = () => {
                         <div className="hidden items-center gap-4 lg:flex">
                             <nav className="flex items-center gap-1 rounded-full border border-secondary/10 bg-bg-base/80 p-1.5 backdrop-blur-md">
                                 <NavLink to="/" className={navLinkClass}>
-                                    {t('nav.home', 'Старт')}
+                                    {t('nav.home', 'Home')}
                                 </NavLink>
                                 <NavLink to="/portfolio" className={navLinkClass}>
                                     {t('nav.portfolio', 'Работы')}
@@ -120,7 +127,7 @@ const Header = () => {
                             </nav>
 
                             {/* Language dropdown */}
-                            <div className="relative" ref={langRef}>
+                            <div className="relative" ref={desktopLangRef}>
                                 <button
                                     type="button"
                                     onClick={() => setIsLangOpen((prev) => !prev)}
@@ -188,7 +195,7 @@ const Header = () => {
 
                         {/* Mobile actions */}
                         <div className="flex items-center gap-2 lg:hidden">
-                            <div className="relative" ref={langRef}>
+                            <div className="relative" ref={mobileLangRef}>
                                 <button
                                     type="button"
                                     onClick={() => setIsLangOpen((prev) => !prev)}

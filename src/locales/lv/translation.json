@@ -3,7 +3,9 @@
     "portfolio": "Portfolio",
     "path": "Mana ceļš",
     "story": "Mana stāsta",
-    "lang": "Mainīt valodu"
+    "lang": "Mainīt valodu",
+    "home": "Sākumlapa",
+    "cta": "Sazināties"
   },
   "hero": {
     "status": "Atvērts jauniem projektiem",

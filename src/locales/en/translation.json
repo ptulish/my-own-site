@@ -3,7 +3,9 @@
     "portfolio": "Portfolio",
     "path": "My Path",
     "story": "Story",
-    "lang": "Switch language"
+    "lang": "Switch language",
+    "cta": "Get in Touch!",
+    "home": "Main"
   },
   "hero": {
     "status": "Open to new projects",
