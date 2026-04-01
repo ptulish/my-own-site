@@ -1,23 +1,30 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// Импортируем наши будущие файлы с переводами
-import translationRU from '/src/locales/ru/translation.json';
-import translationEN from '/src/locales/en/translation.json';
+import translationRU from './locales/ru/translation.json';
+import translationEN from './locales/en/translation.json';
+import translationLV from './locales/lv/translation.json';
 
 const resources = {
-    ru: { translation: translationRU },
-    en: { translation: translationEN }
+    ru: {
+        translation: translationRU
+    },
+    en: {
+        translation: translationEN
+    },
+    lv: {
+        translation: translationLV
+    }
 };
 
 i18n
-    .use(initReactI18next) // Передаем инстанс i18n в react-i18next
+    .use(initReactI18next)
     .init({
         resources,
-        lng: 'ru', // Язык по умолчанию
-        fallbackLng: 'en', // Резервный язык, если перевод не найден
+        lng: 'ru',
+        fallbackLng: 'en',
         interpolation: {
-            escapeValue: false // В React защита от XSS встроена по умолчанию
+            escapeValue: false
         }
     });
 

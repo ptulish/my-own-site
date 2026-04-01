@@ -1,0 +1,259 @@
+{
+  "nav": {
+    "portfolio": "Portfolio",
+    "path": "Mana ceļš",
+    "story": "Mana stāsta",
+    "lang": "Mainīt valodu"
+  },
+  "hero": {
+    "status": "Atvērts jauniem projektiem",
+    "title_part1": "Izveidoju modernas",
+    "title_part2": "tīmekļa produktus un saskarnes",
+    "description": "Palīdzu biznesam palaist ātrus, modernos un mērogojamos vietnes un platformas — no ladingu līdz sarežģītām React lietotnēm.",
+    "cta_discuss": "Apspriest projektu",
+    "cta_portfolio": "Apskatīt darbus",
+
+    "tech_items": ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+
+    "card_badge": "Galvenais fokuss",
+    "card_title": "Inženiertehnisks pieeja katram uzdevumam",
+    "card_description": "Apvienoju spēcīgu vizuālo stilu, pārdomātu arhitektūru un praktisku izstrādi, lai projekts būtu skaists, ātrs un viegli attīstāms.",
+
+    "point_1": "Projektēju saskarnes arhitektūru vieglai mērogojamībai.",
+    "point_2": "Strādāju attālināti un elastīgi, tāpēc varu efektīvi vadīt projektus no jebkuras vietas.",
+    "point_3": "Izveidoju ne tikai skaistas lapas, bet skaidrus un funkcionālus digitālos produktus."
+  },
+  "features": {
+    "badge": "Kāpēc izvēlēties mani",
+    "section_title": "Pieeja, kas ietaupa biznesa laiku un naudu",
+    "section_subtitle": "Es izveidoju ne tikai skaistas saskarnes, bet pārdomātus risinājumus, kas viegli palaisti, uzturēt un turpmāk attīstīt.",
+
+    "card1_title": "Mērogojama arhitektūra",
+    "card1_desc": "Rakstu tīru, modularizētu un saprotamu kodu, lai projekts neiedzīvotos ierobežojumos jau dažus mēnešus pēc palaišanas.",
+
+    "card2_title": "Augsta veiktspēja",
+    "card2_desc": "Optimizēju saskarnes, ielādes ātrumu un projektu struktūru ātrai darbībai un spēcīgam pirmajam iespaidam.",
+
+    "card3_title": "Mūsdienīga UI/UX",
+    "card3_desc": "Izveidoju tīras, saprotamas un vizuāli spēcīgas saskarnes, kas padara produkta izmantošanu vienkāršu un patīkamu.",
+
+    "bottom_points": [
+      "Tīra izstrāde bez haosa un pārslodzes.",
+      "Fokuss uz rezultātu, ne tikai vizuālo pusi.",
+      "Pieeja, kas ērta turpmākai projekta attīstībai."
+    ]
+  },
+  "portfolio_teaser": {
+    "badge": "Izcelti gadījumi",
+    "section_title": "Projekti, kuros svarīga ne tikai vizuālā puse, bet arī arhitektūra",
+    "section_subtitle": "Rādu darbus, kur saskarne, veiktspēja un projekta struktūra darbojas kopā un dod spēcīgu rezultātu.",
+    "see_all_button": "Apskatīt visus darbus",
+    "view_github": "Atvērt GitHub",
+
+    "project1_badge": "Galvenais gadījums",
+    "project1_title": "Educore Platforma",
+    "project1_desc": "Kompleksa izglītības platforma ar sarežģītu UI, pārdomātu komponentu arhitektūru un dziļu frontend struktūru.",
+    "featured_note": "Šis projekts labi parāda manu pieeju lielām saskarnēm, komponentu arhitektūrai un sarežģītu frontend lietotņu organizācijai.",
+
+    "project2_badge": "Sistēmas veidne",
+    "project2_title": "Mūsdienīga Vietnes Veidne",
+    "project2_desc": "Augstas veiktspējas React veidne ar modernu arhitektūru, ērtu projektu struktūru un spēcīgu pamatu ātrai komerciālo risinājumu palaišanai."
+  },
+  "contact": {
+    "badge": "Sazināties ar mani",
+    "title": "Apspriedīsim jūsu projektu",
+    "subtitle": "Ja nepieciešama moderna vietne, saskarne vai platforma ar spēcīgu vizuālo prezentāciju un pārdomātu arhitektūru — rakstiet man.",
+    "direct_email_label": "E-pasts",
+    "direct_telegram_label": "Telegram",
+    "email": "ptulish@icloud.com",
+    "telegram": "@ptulish",
+    "form_badge": "Kontaktforma",
+    "form_title": "Pastāstiet par jūsu uzdevumu",
+    "form_name": "Jūsu vārds",
+    "form_email": "E-pasts",
+    "form_message": "Ziņojums",
+    "placeholder_name": "Kā jums vērsties?",
+    "placeholder_email": "Uz kurieni atbildēt?",
+    "placeholder_message": "Īsi aprakstiet projektu, uzdevumu vai ideju",
+    "submit_button": "Nosūtīt ziņojumu"
+  },
+  "pricing": {
+    "badge": "Pakalpojumi un cenas",
+    "section_title": "Sk aidri darba formāti, cenas un termiņi",
+    "section_subtitle": "Zemāk — pamatvirzieni, ar kuriem es strādāju. Galīgā cena un termiņi atkarīgi no struktūras, funkcionalitātes un projekta sarežģītības.",
+    "featured_badge": "Biežākais pieprasījums",
+    "cta_label": "Apspriest projektu",
+
+    "card1_title": "Ladingu / Portfolio",
+    "card1_price": "no 50€",
+    "card1_time": "no 2 dienām",
+    "card1_desc": "Piestāv personīgajai zīmolam, pakalpojumam, produktam vai tīrai projekta prezentācijai vienā spēcīgā ekrānā vai kompaktā struktūrā.",
+    "card1_points": [
+      "Ātrs starts un skaidra prezentācija.",
+      "Mūsdienīgs dizains un adaptīvā izvietošana.",
+      "Laba opcija palaišanai bez sarežģītības."
+    ],
+
+    "card2_title": "Daudzlappušu vietne",
+    "card2_price": "no 100€",
+    "card2_time": "no 1 nedēļas",
+    "card2_desc": "Biznesam, servisam vai uzņēmumam, kad nepieciešama plašāka struktūra, vairākas lapas, pārdomāta navigācija un mērogojamība.",
+    "card2_points": [
+      "Piemērota korporatīvajām un servisa vietnēm.",
+      "Elastīga struktūra un lapu loģika.",
+      "Pamats turpmākai projekta attīstībai."
+    ],
+
+    "card3_title": "Individuāls projekts",
+    "card3_price": "cena pēc vienošanās",
+    "card3_time": "pēc vienošanās",
+    "card3_desc": "Ja nepieciešams interneta veikals, nestandarta platforma vai īpaša biznesa loģika — projektu novērtē individuāli.",
+    "card3_points": [
+      "Interneta veikali un nestandarta risinājumi.",
+      "Individuāla arhitektūra un funkcionalitāte.",
+      "Termiņi un cena atkarīga no apjoma."
+    ]
+  },
+  "faq": {
+    "badge": "BUJ",
+    "section_title": "Biežāk uzdotie jautājumi pirms projekta sākuma",
+    "section_subtitle": "Esmu apkopojis atbildes uz galvenajiem jautājumiem, kas visbiežāk rodas pirms darba uzsākšanas.",
+    "side_note": "Ja jums ir nestandarta uzdevums vai nav gatava tehniskā specifikācija, tas nav problēma — var visu apspriest un noteikt optimālo darba formātu kopā.",
+    "cta_title": "Neatradāt vajadzīgo atbildi?",
+    "cta_text": "Rakstiet man tieši, un es palīdzēšu saprast, kā labāk realizēt jūsu projektu.",
+    "cta_button": "Rakstīt Telegram",
+    "items": [
+      {
+        "question": "Kas iekļauts vietnes bāzes cenā?",
+        "answer": "Bāzes cenā iekļauta adaptīva vietne, viens dizaina variants, sīkas klienta labojumi un projekta izvietošana. Domēns un mitināšana cenā neietilpst — šie izdevumi paliek klienta pusē."
+      },
+      {
+        "question": "Cik labojumu iekļauts?",
+        "answer": "Bāzes cenā iekļauti 3 labojumu kārtas. Katra turpmākā labojumu kārta tiek maksāta atsevišķi — 10€ par kārtu."
+      },
+      {
+        "question": "Kas nepieciešams darba uzsākšanai?",
+        "answer": "Lai sāktu, vēlams sagatavot logotipu, zīmola krāsas, tekstu, vietņu piemērus, atsauces un aptuvenu struktūras izpratni: kādas sadaļas vai lapas nepieciešamas. Labākais variants ir PDF formātā, bet nepieciešamības gadījumā visu var apspriest sarunā."
+      },
+      {
+        "question": "Vai var vērsties bez gatavas tehniskās specifikācijas?",
+        "answer": "Jā, var. Ja jums vēl nav gatavas specifikācijas, rakstiet man — palīdzēšu saprast projektu struktūru, noteikt nepieciešamās lapas un izveidot bāzes virzienu darbam."
+      },
+      {
+        "question": "Vai var pasūtīt steidzamu projektu?",
+        "answer": "Jā, steidzami projekti ir iespējami, ja man ir brīva slodze. Šādā gadījumā cena tiek apspriesta atsevišķi, ņemot vērā steidzamību."
+      },
+      {
+        "question": "Kā notiek apmaksa?",
+        "answer": "Apmaksa sadalīta divās daļās: 30% avanss pirms darba uzsākšanas un atlikusī summa pēc darba pabeigšanas un vietnes izvietošanas."
+      }
+    ]
+  },
+  "portfolio_page": {
+    "title": "Mani darbi",
+    "subtitle": "Projekti, kuros apvienoju modernu saskarni, pārdomātu arhitektūru un praktisku izstrādes pieeju.",
+    "badge": "Izcelti projekti",
+
+    "filter_all": "Visi",
+    "filter_react": "React",
+    "filter_landing": "Ladingi",
+    "filter_platform": "Platformas",
+
+    "projects_overview_title": "Projektu pārskats",
+    "projects_overview_count_one": "{{count}} projekts parādīts",
+    "projects_overview_count_other": "{{count}} projekti parādīti",
+
+    "featured_badge": "Galvenais projekts",
+    "focus_label": "Fokuss",
+    "focus_title": "Ne tikai kartītes, bet reāli gadījumi",
+    "focus_text": "Šeit rādu ne tikai vizuālo pusi, bet arhitektūras domāšanu, saskarnes pieeju, veiktspēju un biznesa uzdevumu risinājumus.",
+    "links_label": "Saite",
+
+    "view_demo": "Apskatīt demo",
+    "view_code": "Apskatīt kodu",
+
+    "single_project_state": "Šajā filtrā pašlaik ir tikai viens spēcīgs gadījums — tas jau parādīts augstāk.",
+    "empty_state": "Šim filtram pagaidām nav projektu.",
+
+    "category_platform": "Platforma",
+    "category_react": "React",
+    "category_landing": "Lading",
+
+    "projects": {
+      "educore_title": "Educore Platforma",
+      "educore_description": "Kompleksa izglītības platforma ar sarežģītu UI, pārdomātu komponentu arhitektūru un backend integrāciju.",
+
+      "template_title": "Mūsdienīga Vietnes Veidne",
+      "template_description": "Augstas veiktspējas React veidne ar modernu arhitektūru, ērtu projektu struktūru un spēcīgu pamatu ātrai komerciālo risinājumu palaišanai.",
+
+      "landing_title": "Aģentūras Lading Lapas",
+      "landing_description": "Ātrs pārdošanas lading aģentūrai ar fokusu uz vizuālo prezentāciju, gludu saskarni un augstu konversiju."
+    }
+  },
+  "path_page": {
+    "badge": "Mana pieredze",
+    "title": "Mans inženiertehniskais ceļš",
+    "subtitle": "6 gadi izstrādē: no pirmajiem kodēšanas eksperimentiem līdz rūpnieciskā aprīkojuma telemetrijas un Eiropas loģistikas sistēmu izveidei.",
+
+    "timeline_1_date": "2020–2021",
+    "timeline_1_title": "Inženierijas starts skolā",
+    "timeline_1_desc": "Pirmā programmēšanas iepazīšanās 11. klasē caur skolas Java projektu (JavaHamster analogs). 12. klasē pašmācībā apguvu tīmekļa tehnoloģijas un pamatlanguages: HTML/CSS/PHP un zemu līmeņa C/C++/C#.",
+
+    "timeline_2_date": "Jan–Mai 2023",
+    "timeline_2_title": "Pirmā komerciālā izstrāde",
+    "timeline_2_desc": "Darbs Austrijas Schiebel Antriebstechnik. Pievienojos C# MAUI mobilās aplikācijas izstrādes komandai, kas reāllaikā savienojās ar uzņēmuma piedziņām un attēloja kritiski svarīgus aprīkojuma parametrus.",
+
+    "timeline_3_date": "Mai–Oktobris 2023",
+    "timeline_3_title": "IoT projekta vadītājs",
+    "timeline_3_desc": "Vadīju Flutter aplikācijas izstrādi laivu VESC motoru uzraudzībai. Sistēma reāllaikā vāca telemetriju: ātrumu, GPS, motora raksturlielumus. Pilnīga aparatūras integrācija.",
+
+    "timeline_4_date": "Oktobris 2023 – Pašlaik",
+    "timeline_4_title": "Eiropas loģistika",
+    "timeline_4_desc": "Uzturu un modernizēju lielu ERP loģistikas sistēmu, kas darbojas 6 Eiropas valstīs. Staks: C# .NET 4.7.2, SQL Server, WebForms, CI/CD. Legacy koda optimizācija un tehnoloģiju migrācija.",
+
+    "timeline_5_date": "Decembris 2024 – Pašlaik",
+    "timeline_5_title": "Freelance starts un ladingi",
+    "timeline_5_desc": "Pirmais klients — tēvs, pēc tam caur draugiem un ieteikumiem. Sāku ar PHP, ātri pārgāju uz React augstas ātruma ladingu izveidei. Pilns cikls: no dizaina līdz izvietošanai.",
+
+    "timeline_6_date": "Oktobris 2025 – Pašlaik",
+    "timeline_6_title": "E-commerce un sarežģītas platformas",
+    "timeline_6_desc": "Pāreja uz sarežģītiem projektiem: tiešsaistes veikali, izglītības platformas, korporatīvās vietnes. Specializējos React lietotņu arhitektūrā, veiktspējas optimizācijā un SEO.",
+
+    "skills_title": "Mans pašreizējais staks",
+    "skills_desc": "Pilns tīmekļa izstrādes cikls: no prototipa līdz production sistēmām",
+    "skills_list": [
+      "React 18+",
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "C# .NET",
+      "SQL / PostgreSQL",
+      "Flutter",
+      "IoT / Real-time"
+    ]
+  },
+  "story_page": {
+    "title": "Mana stāsta",
+    "subtitle": "Kā skolas projekts aizveda līdz rūpniecības sistēmu izveidei un neatkarīgai tīmekļa izstrādei.",
+
+    "section_1_title": "Ceļa sākums",
+    "section_1_text": "2021. gadā 11. klasē veidojām skolas Java projektu — tā bija mana pirmā īstā programmēšanas iepazīšanās. 12. klasē pašmācībā apguvu tīmekļa tehnoloģijas un iedziļinājos C/C++/C#. Tad sapratu, ka gribu saistīt dzīvi tieši ar izstrādi.",
+
+    "section_2_title": "Pirmais pieredze Austrijā",
+    "section_2_text": "Strādājot McDonald's Vīnē, 2023. gada janvārī atradu pirmo IT darbu Schiebel Antriebstechnik. Ievaidos mobilās aplikācijas komandā, kas izstrādāja rūpniecības piedziņām — mans pirmais komerciālais projekts.",
+
+    "section_3_title": "Projekta vadītājs",
+    "section_3_text": "2023. gada maijā vadīju Flutter aplikācijas izstrādi laivu motoriem. Sistēma vāca telemetriju reāllaikā: ātrumu, GPS, motora raksturlielumus. Pirmais projekts, kur vadīju pilnu izstrādes ciklu.",
+
+    "section_4_title": "Eiropas loģistika",
+    "section_4_text": "Kopš 2023. gada oktobra strādāju pie lielas loģistikas sistēmas 6 Eiropas valstīm. Šeit redzu, kā mani lēmumi ietekmē biznesu reāllaikā. Arī uzsāku studijas FernUni Hagen, lai nostiprinātu akadēmisko bāzi.",
+
+    "section_5_title": "Nez independentums",
+    "section_5_text": "Sāku freelancingu 2024. gada decembrī. Pirmais klients — tēvs, pēc tam caur draugiem un ieteikumiem. Pārgāju no PHP uz React, saprotot: mūsdienīgām vietnēm jābūt ātrām un mērogojamām. Tagad izveidoju sarežģītas platformas un e-commerce.",
+
+    "cta_title": "Gatavs apspriest jūsu projektu",
+    "cta_text": "Vēlaties izveidot modernu vietni, mobilu aplikāciju vai optimizēt loģistiku? Rakstiet man — izveidosim kopā.",
+    "cta_button": "Apspriest projektu"
+  }
+}

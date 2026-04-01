@@ -1,16 +1,259 @@
 {
-  "hero": {
-    "status": "Открыт для новых фриланс-проектов",
-    "title_part1": "Создаю быстрые веб-приложения",
-    "title_part2": "для вашего бизнеса",
-    "description": "Я не просто пишу код. Я проектирую масштабируемую архитектуру и современные интерфейсы на React, которые помогают компаниям расти и привлекать клиентов.",
-    "cta_discuss": "Обсудить проект",
-    "cta_portfolio": "Смотреть портфолио",
-    "tech_stack": "Использую в работе"
-  },
   "nav": {
-    "portfolio": "Работы",
-    "path": "Мой путь",
-    "story": "История"
+    "portfolio": "Portfolio",
+    "path": "My Path",
+    "story": "Story",
+    "lang": "Switch language"
+  },
+  "hero": {
+    "status": "Open to new projects",
+    "title_part1": "Creating modern",
+    "title_part2": "web products and interfaces",
+    "description": "I help businesses launch fast, modern, and scalable websites and platforms — from landing pages to complex React applications.",
+    "cta_discuss": "Discuss project",
+    "cta_portfolio": "View work",
+
+    "tech_items": ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+
+    "card_badge": "Main focus",
+    "card_title": "Engineering approach to every task",
+    "card_description": "I combine strong visual style, thoughtful architecture, and practical development so the project is beautiful, fast, and easy to scale.",
+
+    "point_1": "I design interface architecture for easy scalability.",
+    "point_2": "I work remotely and flexibly, so I can efficiently handle projects from anywhere.",
+    "point_3": "I create not just beautiful pages, but clear and functional digital products."
+  },
+  "features": {
+    "badge": "Why choose me",
+    "section_title": "Approach that saves business time and money",
+    "section_subtitle": "I create not just beautiful interfaces, but thoughtful solutions that are easy to launch, maintain, and scale further.",
+
+    "card1_title": "Scalable architecture",
+    "card1_desc": "I write clean, modular, and understandable code so the project doesn't hit limitations just months after launch.",
+
+    "card2_title": "High performance",
+    "card2_desc": "I optimize interfaces, loading speed, and project structure for fast performance and strong first impressions.",
+
+    "card3_title": "Modern UI/UX",
+    "card3_desc": "I create clean, intuitive, and visually strong interfaces that make product interaction simple and pleasant.",
+
+    "bottom_points": [
+      "Clean development without chaos or overload.",
+      "Focus on results, not just visuals.",
+      "Approach convenient for future project growth."
+    ]
+  },
+  "portfolio_teaser": {
+    "badge": "Featured cases",
+    "section_title": "Projects where not only visuals matter, but architecture too",
+    "section_subtitle": "Showcasing work where interface, performance, and project structure work together for strong results.",
+    "see_all_button": "View all work",
+    "view_github": "View GitHub",
+
+    "project1_badge": "Main case",
+    "project1_title": "Educore Platform",
+    "project1_desc": "Complex educational platform with sophisticated UI, thoughtful component architecture, and deep frontend structure.",
+    "featured_note": "This project shows my approach to large interfaces, component architecture, and organizing complex frontend applications.",
+
+    "project2_badge": "System template",
+    "project2_title": "Modern Website Template",
+    "project2_desc": "High-performance React template with modern architecture, convenient project structure, and strong foundation for quick commercial launches."
+  },
+  "contact": {
+    "badge": "Get in touch",
+    "title": "Let's discuss your project",
+    "subtitle": "If you need a modern website, interface, or platform with strong visual presentation and thoughtful architecture — write to me.",
+    "direct_email_label": "Email",
+    "direct_telegram_label": "Telegram",
+    "email": "ptulish@icloud.com",
+    "telegram": "@ptulish",
+    "form_badge": "Contact form",
+    "form_title": "Tell me about your task",
+    "form_name": "Your name",
+    "form_email": "Email",
+    "form_message": "Message",
+    "placeholder_name": "How should I address you?",
+    "placeholder_email": "Where should I reply?",
+    "placeholder_message": "Briefly describe the project, task, or idea",
+    "submit_button": "Send message"
+  },
+  "pricing": {
+    "badge": "Services and pricing",
+    "section_title": "Clear work formats, pricing, and timelines",
+    "section_subtitle": "Below are the main directions I work with. Final cost and timeline depend on structure, functionality, and project complexity.",
+    "featured_badge": "Most common request",
+    "cta_label": "Discuss project",
+
+    "card1_title": "Landing / Portfolio",
+    "card1_price": "from 50€",
+    "card1_time": "from 2 days",
+    "card1_desc": "Perfect for personal brand, service, product, or clean project presentation in one strong screen or compact structure.",
+    "card1_points": [
+      "Quick start and clear presentation.",
+      "Modern design and responsive layout.",
+      "Good option for launch without complexity."
+    ],
+
+    "card2_title": "Multi-page website",
+    "card2_price": "from 100€",
+    "card2_time": "from 1 week",
+    "card2_desc": "For business, service, or company needing broader structure, multiple pages, thoughtful navigation, and scalability.",
+    "card2_points": [
+      "Suitable for corporate and service websites.",
+      "Flexible structure and page logic.",
+      "Foundation for future project growth."
+    ],
+
+    "card3_title": "Custom project",
+    "card3_price": "custom pricing",
+    "card3_time": "to be determined",
+    "card3_desc": "For online stores, custom platforms, or specific business logic — project is estimated individually.",
+    "card3_points": [
+      "Online stores and custom solutions.",
+      "Individual architecture and functionality.",
+      "Timeline and cost depend on scope."
+    ]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "section_title": "Common questions before project start",
+    "section_subtitle": "I've collected answers to the most frequent questions that come up before beginning work.",
+    "side_note": "If you have a non-standard task or no ready technical specification, that's not a problem — we can discuss everything and determine the optimal work format together.",
+    "cta_title": "Didn't find the answer you need?",
+    "cta_text": "Write to me directly, and I'll help understand the best way to implement your project.",
+    "cta_button": "Message on Telegram",
+    "items": [
+      {
+        "question": "What is included in the base website price?",
+        "answer": "Base price includes responsive website, one design variant, minor client revisions, and project deployment. Domain and hosting are not included — these expenses remain on the client side."
+      },
+      {
+        "question": "How many revisions are included?",
+        "answer": "Base price includes 3 revision rounds. Each additional revision round is charged separately — 10€ per round."
+      },
+      {
+        "question": "What do I need to provide to start work?",
+        "answer": "To start, it's best to prepare logo, brand colors, text, website examples, references, and approximate structure understanding: what sections or pages are needed. PDF format works best, but we can discuss everything in conversation if needed."
+      },
+      {
+        "question": "Can I reach out without ready technical specification?",
+        "answer": "Yes, absolutely. If you don't have a ready specification, write to me — I'll help understand project structure, determine needed pages, and establish the basic direction to start."
+      },
+      {
+        "question": "Can I order an urgent project?",
+        "answer": "Yes, urgent projects are possible if I have available capacity. Pricing is discussed separately taking urgency into account."
+      },
+      {
+        "question": "How does payment work?",
+        "answer": "Payment is split into two parts: 30% upfront before start and remaining amount after project completion and deployment."
+      }
+    ]
+  },
+  "portfolio_page": {
+    "title": "My work",
+    "subtitle": "Selection of projects where I combine modern interface, thoughtful architecture, and practical development approach.",
+    "badge": "Featured projects",
+
+    "filter_all": "All",
+    "filter_react": "React",
+    "filter_landing": "Landing pages",
+    "filter_platform": "Platforms",
+
+    "projects_overview_title": "Projects overview",
+    "projects_overview_count_one": "{{count}} project shown",
+    "projects_overview_count_other": "{{count}} projects shown",
+
+    "featured_badge": "Main project",
+    "focus_label": "Focus",
+    "focus_title": "Not just cards, but real cases",
+    "focus_text": "Here I show not only visual part, but architectural thinking, interface approach, performance, and business task solutions.",
+    "links_label": "Links",
+
+    "view_demo": "View demo",
+    "view_code": "View code",
+
+    "single_project_state": "This filter currently has only one strong case — it's shown above.",
+    "empty_state": "No projects for this filter yet.",
+
+    "category_platform": "Platform",
+    "category_react": "React",
+    "category_landing": "Landing",
+
+    "projects": {
+      "educore_title": "Educore Platform",
+      "educore_description": "Complex educational platform with sophisticated UI, thoughtful component architecture, and backend integration.",
+
+      "template_title": "Modern Website Template",
+      "template_description": "High-performance React template with modern architecture, convenient project structure, and strong foundation for quick commercial launches.",
+
+      "landing_title": "Agency Landing Page",
+      "landing_description": "Fast selling landing page for digital agency focused on visual presentation, smooth interface, and high conversion."
+    }
+  },
+  "path_page": {
+    "badge": "My experience",
+    "title": "My engineering path",
+    "subtitle": "6 years in development: from first code experiments to creating telemetry for industrial equipment and European logistics.",
+
+    "timeline_1_date": "2020–2021",
+    "timeline_1_title": "Engineering start in school",
+    "timeline_1_desc": "First programming exposure in 11th grade through school Java project (JavaHamster equivalent). In 12th grade, self-studied web technologies and fundamentals: HTML/CSS/PHP and low-level C/C++/C#.",
+
+    "timeline_2_date": "Jan–May 2023",
+    "timeline_2_title": "First commercial development",
+    "timeline_2_desc": "Work at Austrian Schiebel Antriebstechnik. Joined mobile app development team on C# MAUI connecting to proprietary drives in real-time, displaying critical equipment parameters.",
+
+    "timeline_3_date": "May–October 2023",
+    "timeline_3_title": "IoT project lead",
+    "timeline_3_desc": "Led Flutter app development for boat VESC motor monitoring. Real-time telemetry system: speed, GPS, motor characteristics. Full hardware integration.",
+
+    "timeline_4_date": "October 2023 – Present",
+    "timeline_4_title": "European logistics",
+    "timeline_4_desc": "Maintaining and modernizing large ERP logistics system operating in 6 European countries. Stack: C# .NET 4.7.2, SQL Server, WebForms, CI/CD. Legacy optimization and tech migration.",
+
+    "timeline_5_date": "December 2024 – Present",
+    "timeline_5_title": "Freelance start and landing pages",
+    "timeline_5_desc": "First client — father, then through friends and recommendations. Started with PHP, quickly moved to React for high-speed landing pages. Full cycle: design to deployment.",
+
+    "timeline_6_date": "October 2025 – Present",
+    "timeline_6_title": "E-commerce and complex platforms",
+    "timeline_6_desc": "Transition to complex projects: online stores, educational platforms, corporate sites. Specialization in React app architecture, performance optimization, and SEO.",
+
+    "skills_title": "My current stack",
+    "skills_desc": "Full web development cycle: from prototype to production systems",
+    "skills_list": [
+      "React 18+",
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "C# .NET",
+      "SQL / PostgreSQL",
+      "Flutter",
+      "IoT / Real-time"
+    ]
+  },
+  "story_page": {
+    "title": "My story",
+    "subtitle": "How a school project led me to building industrial systems and independent web development.",
+
+    "section_1_title": "Path beginning",
+    "section_1_text": "In 2021 during 11th grade, we did a school Java project — that was my first real programming exposure. By 12th grade, I was self-studying web technologies and digging into C/C++/C#. That's when I knew I wanted to tie my life to development.",
+
+    "section_2_title": "First Austria experience",
+    "section_2_text": "While working at McDonald's in Vienna, in January 2023 I found my first IT job at Schiebel Antriebstechnik. I joined the mobile app team developing for industrial drives — my first commercial project.",
+
+    "section_3_title": "Project lead",
+    "section_3_text": "In May 2023, I led Flutter app development for boat motors. The system collected real-time telemetry: speed, GPS, motor characteristics. First project where I handled full development cycle.",
+
+    "section_4_title": "European logistics",
+    "section_4_text": "Since October 2023 working on large logistics system for 6 European countries. Here I see how my decisions impact business in real time. Also enrolled at FernUni Hagen to strengthen academic foundation.",
+
+    "section_5_title": "Independence",
+    "section_5_text": "Started freelancing December 2024. First client — father, then through friends and recommendations. Moved from PHP to React realizing modern sites need speed and scalability. Now building complex platforms and e-commerce.",
+
+    "cta_title": "Ready to discuss your project",
+    "cta_text": "Want to create modern website, mobile app, or optimize logistics? Write me — let's build it together.",
+    "cta_button": "Discuss project"
   }
 }
