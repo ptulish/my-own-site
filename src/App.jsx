@@ -6,6 +6,7 @@ import HomePage from "./components/layout/HomePage.jsx";
 import PortfolioPage from "./components/layout/PortfolioPage.jsx";
 import PathPage from "./components/layout/PathPage.jsx";
 import StoryPage from "./components/layout/StoryPage.jsx";
+import AdminPage from "./components/layout/AdminPage.jsx";
 
 const Story = () => <h1 className="text-4xl font-bold mt-10">Моя личная история</h1>;
 
@@ -21,6 +22,12 @@ const router = createBrowserRouter([
       { path: "/story", element: <StoryPage /> },
     ],
   },
+  {
+    // 2. Добавляем отдельный роут для админки
+    // Звездочка (*) обязательна, так как Sanity использует свою внутреннюю навигацию
+    path: "/admin/*",
+    element: <AdminPage />,
+  }
 ]);
 
 const App = () => {
