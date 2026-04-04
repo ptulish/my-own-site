@@ -7,63 +7,95 @@ export default {
             name: 'title',
             title: 'Название проекта',
             type: 'string',
+            validation: (Rule) => Rule.required(),
         },
         {
-            name: 'description',
-            title: 'Описание',
-            type: 'text',
+            name: 'slug',
+            title: 'Ссылка (Slug)',
+            type: 'slug',
+            options: { source: 'title', maxLength: 96 },
+            validation: (Rule) => Rule.required(),
+        },
+        {
+            name: 'isFeatured',
+            title: '🌟 Сделать флагманом (Большая карточка)',
+            type: 'boolean',
+            initialValue: false,
+            description: 'Если включено, проект будет занимать две колонки',
         },
         {
             name: 'category',
-            title: 'Категория (ID)',
+            title: 'Категория',
             type: 'string',
-            description: 'Например: platform, react, landing',
             options: {
                 list: [
-                    { title: 'Платформа', value: 'platform' },
-                    { title: 'React-приложение', value: 'react' },
                     { title: 'Лендинг', value: 'landing' },
+                    { title: 'Екоммерц', value: 'ecommerce' },
+                    // Когда захочешь добавить новый раздел, просто добавь строку сюда:
+                    // { title: 'Новый раздел', value: 'new_section' },
                 ],
             },
+            validation: (Rule) => Rule.required(),
+        },
+        // --- ОПИСАНИЯ НА РАЗНЫХ ЯЗЫКАХ ---
+        {
+            name: 'description_ru',
+            title: 'Описание (RU)',
+            type: 'text',
+            rows: 3,
         },
         {
-            name: 'tags',
-            title: 'Технологии (Теги)',
-            type: 'array',
-            of: [{ type: 'string' }],
-            description: 'Добавь теги, нажимая Enter',
+            name: 'description_en',
+            title: 'Описание (EN)',
+            type: 'text',
+            rows: 3,
         },
         {
-            name: 'github',
-            title: 'Ссылка на GitHub',
-            type: 'url',
+            name: 'description_lv',
+            title: 'Описание (LV)',
+            type: 'text',
+            rows: 3,
         },
+        // ---------------------------------
         {
-            name: 'demo',
-            title: 'Ссылка на Demo',
-            type: 'url',
+            name: 'image',
+            title: 'Главное изображение',
+            type: 'image',
+            options: { hotspot: true },
         },
         {
             name: 'bgGradient',
             title: 'Градиент фона (Tailwind классы)',
             type: 'string',
-            description: 'Например: from-sky-400 via-blue-500 to-blue-700',
+            description: 'Например: from-sky-200 to-blue-200',
         },
         {
-            name: 'accent',
-            title: 'Акцентный цвет (Tailwind классы)',
-            type: 'string',
-            description: 'Например: bg-sky-500/10 text-sky-700 border-sky-500/20',
+            name: 'tags',
+            title: 'Стек технологий',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: { layout: 'tags' },
         },
-        // ... твои старые поля
         {
-            name: 'image',
-            title: 'Изображение проекта',
-            type: 'image',
-            options: {
-                hotspot: true, // Позволяет выбирать главную часть картинки при обрезке
-            },
+            name: 'links',
+            title: 'Ссылки',
+            type: 'object',
+            fields: [
+                { name: 'demo', title: 'Live Demo', type: 'url' },
+                { name: 'github', title: 'GitHub', type: 'url' },
+            ],
         },
-        // ...
+        {
+            name: 'order',
+            title: 'Порядок сортировки (1 - первый)',
+            type: 'number',
+        }
     ],
+    orderings: [
+        {
+            title: 'Сначала важные',
+            name: 'orderAsc',
+            by: [{ field: 'order', direction: 'asc' }]
+        }
+    ]
 }

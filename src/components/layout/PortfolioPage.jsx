@@ -1,16 +1,17 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, Code2, Layers3, Filter, Sparkles, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Code2, Sparkles, LayoutGrid } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { client, urlFor } from '../../client';
 
 const PortfolioPage = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [activeFilter, setActiveFilter] = useState('all');
     const [allProjects, setAllProjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const query = '*[_type == "project"]';
+        const query = '*[_type == "project"] | order(order asc)';
         client.fetch(query)
             .then((data) => {
                 setAllProjects(data);
@@ -19,12 +20,29 @@ const PortfolioPage = () => {
             .catch(console.error);
     }, []);
 
-    const filters = [
-        { id: 'all', label: t('portfolio_page.filter_all') },
-        { id: 'react', label: t('portfolio_page.filter_react') },
-        { id: 'landing', label: t('portfolio_page.filter_landing') },
-        { id: 'platform', label: t('portfolio_page.filter_platform') }
-    ];
+    const getLocalizedDescription = (project) => {
+        const lang = i18n.language;
+        if (lang === 'en' && project.description_en) return project.description_en;
+        if (lang === 'lv' && project.description_lv) return project.description_lv;
+        return project.description_ru || '';
+    };
+
+    const categoryInfo = {
+        all: {
+            label: t('portfolio_page.categories.all.label'),
+            description: t('portfolio_page.categories.all.description')
+        },
+        landing: {
+            label: t('portfolio_page.categories.landing.label'),
+            description: t('portfolio_page.categories.landing.description')
+        },
+        ecommerce: {
+            label: t('portfolio_page.categories.ecommerce.label'),
+            description: t('portfolio_page.categories.ecommerce.description')
+        }
+    };
+
+    const ObjectKeys = Object.keys(categoryInfo);
 
     const filteredProjects = useMemo(() => {
         return activeFilter === 'all'
@@ -32,133 +50,193 @@ const PortfolioPage = () => {
             : allProjects.filter(project => project.category === activeFilter);
     }, [activeFilter, allProjects]);
 
-    const projectsCountText = filteredProjects.length === 1
-        ? t('portfolio_page.projects_overview_count_one', { count: filteredProjects.length })
-        : t('portfolio_page.projects_overview_count_other', { count: filteredProjects.length });
-
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-bg-base flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <div className="min-h-screen bg-bg-base py-24 flex flex-col items-center justify-center">
+                <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary mb-4" />
+                <p className="text-text-muted animate-pulse font-medium">{t('portfolio_page.loading')}</p>
             </div>
         );
     }
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-bg-base py-16 md:py-24">
-            {/* Фоновые элементы */}
+            {/* Фоновые свечения */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-[8%] h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-                <div className="absolute bottom-[10%] left-[20%] h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+                <div className="absolute top-[-10%] left-[10%] h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px]" />
+                <div className="absolute bottom-[10%] right-[10%] h-[600px] w-[600px] rounded-full bg-cyan-400/10 blur-[150px]" />
             </div>
 
-            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12">
-                {/* Заголовок (оставляем твой красивый) */}
-                <div className="mx-auto mb-16 max-w-4xl text-center">
-                    <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary backdrop-blur-md">
+            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                {/* Заголовок */}
+                <div className="mx-auto mb-16 max-w-3xl text-center">
+                    <div className="inline-flex items-center justify-center gap-2 mb-6 rounded-full border border-white/40 bg-white/50 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-primary shadow-sm backdrop-blur-md">
                         <Sparkles className="h-4 w-4" />
                         {t('portfolio_page.badge')}
-                    </span>
-                    <h1 className="mb-6 text-5xl font-extrabold text-text-main md:text-7xl">
+                    </div>
+                    <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-text-main md:text-7xl">
                         {t('portfolio_page.title')}
                     </h1>
+
+                    {/* Фиксированная высота для описания, чтобы контент не прыгал */}
+                    <div className="min-h-[80px] md:min-h-[60px] flex items-center justify-center overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.p
+                                key={activeFilter}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-lg leading-relaxed text-text-muted md:text-xl"
+                            >
+                                {categoryInfo[activeFilter]?.description}
+                            </motion.p>
+                        </AnimatePresence>
+                    </div>
                 </div>
 
                 {/* Фильтры */}
-                <div className="mb-12 flex justify-center gap-3 flex-wrap">
-                    {filters.map((filter) => (
-                        <button
-                            key={filter.id}
-                            onClick={() => setActiveFilter(filter.id)}
-                            className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                                activeFilter === filter.id
-                                    ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                                    : 'bg-white/50 border border-white/20 text-text-muted hover:bg-white hover:text-primary'
-                            }`}
-                        >
-                            {filter.label}
-                        </button>
-                    ))}
+                <div className="mb-14 flex justify-center">
+                    <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-[2rem] border border-white/40 bg-white/40 p-2 shadow-lg backdrop-blur-xl">
+                        {ObjectKeys.map((key) => {
+                            const isActive = activeFilter === key;
+                            return (
+                                <button
+                                    key={key}
+                                    onClick={() => setActiveFilter(key)}
+                                    className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                                        isActive
+                                            ? 'bg-white text-primary shadow-[0_4px_20px_rgba(0,0,0,0.05)]'
+                                            : 'text-text-muted hover:bg-white/50 hover:text-text-main'
+                                    }`}
+                                >
+                                    {categoryInfo[key]?.label}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
 
                 {/* Сетка проектов */}
-                {filteredProjects.length > 0 ? (
-                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-                        {filteredProjects.map((project) => (
-                            <article
-                                key={project._id} // Sanity использует _id вместо id
-                                className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/40 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-                            >
-                                {/* Блок с картинкой */}
-                                <div className="relative h-72 w-full overflow-hidden p-6">
-                                    {/* Красивый под-фон картинки (берем из Sanity) */}
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient || 'from-slate-200 to-slate-100'} opacity-50 transition-opacity group-hover:opacity-100`} />
+                <div className="min-h-[400px]">
+                    <motion.div
+                        layout
+                        className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10"
+                    >
+                        <AnimatePresence>
+                            {filteredProjects.map((project) => (
+                                <motion.article
+                                    key={project._id}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 260,
+                                        damping: 25
+                                    }}
+                                    className={`group relative flex overflow-hidden rounded-[2.5rem] border border-white/50 bg-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-2xl transition-shadow hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] ${
+                                        project.isFeatured ? 'md:col-span-2 flex-col md:flex-row' : 'flex-col'
+                                    }`}
+                                >
+                                    {/* Изображение */}
+                                    <div className={`relative overflow-hidden bg-slate-100 ${project.isFeatured ? 'md:w-1/2 h-72 md:h-auto' : 'w-full h-72'}`}>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient || 'from-slate-200 to-slate-300'} opacity-30`} />
 
-                                    {/* Само изображение */}
-                                    {project.image && (
-                                        <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-lg transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2">
+                                        {project.image ? (
                                             <img
-                                                src={urlFor(project.image).width(800).url()}
+                                                src={urlFor(project.image).width(1200).url()}
                                                 alt={project.title}
-                                                className="h-full w-full object-cover object-top"
+                                                className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                                             />
+                                        ) : (
+                                            <div className="absolute inset-0 flex items-center justify-center text-slate-400">
+                                                <LayoutGrid className="h-12 w-12 opacity-50" />
+                                            </div>
+                                        )}
+
+                                        <div className="absolute left-6 top-6">
+                                            <span className="inline-flex items-center rounded-full border border-white/30 bg-white/70 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm backdrop-blur-md">
+                                                {categoryInfo[project.category]?.label || project.category}
+                                            </span>
                                         </div>
-                                    )}
-
-                                    {/* Плавающий бейдж категории */}
-                                    <div className="absolute top-8 left-8">
-                                        <span className={`inline-flex items-center rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-sm ${project.accent || 'bg-white/80 text-slate-800'}`}>
-                                            {project.category}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Текстовый блок */}
-                                <div className="flex flex-1 flex-col justify-between p-8 pt-4">
-                                    <div>
-                                        <h3 className="mb-3 text-3xl font-bold text-text-main group-hover:text-primary transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <p className="line-clamp-3 text-base leading-relaxed text-text-muted">
-                                            {project.description}
-                                        </p>
                                     </div>
 
-                                    <div className="mt-8 flex flex-col gap-6">
-                                        {/* Теги */}
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tags?.map((tag, index) => (
-                                                <span key={index} className="rounded-xl bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 transition-colors group-hover:bg-primary/10 group-hover:text-primary">
-                                                    {tag}
-                                                </span>
-                                            ))}
+                                    {/* Контент */}
+                                    <div className={`flex flex-col justify-between p-8 sm:p-10 ${project.isFeatured ? 'md:w-1/2' : 'flex-1'}`}>
+                                        <div>
+                                            <h3 className={`font-extrabold text-text-main transition-colors duration-300 group-hover:text-primary ${project.isFeatured ? 'mb-5 text-4xl' : 'mb-4 text-3xl'}`}>
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-base leading-relaxed text-text-muted">
+                                                {getLocalizedDescription(project)}
+                                            </p>
                                         </div>
 
-                                        {/* Кнопки ссылок */}
-                                        <div className="flex items-center gap-4 pt-4 border-t border-slate-200/50">
-                                            {project.demo && (
-                                                <a href={project.demo} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full bg-text-main px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary hover:shadow-lg hover:shadow-primary/30">
-                                                    <span>Демо</span>
-                                                    <ExternalLink className="h-4 w-4" />
-                                                </a>
+                                        <div className="mt-8 flex flex-col gap-6">
+                                            {project.tags && project.tags.length > 0 && (
+                                                <div className="flex flex-wrap gap-2">
+                                                    {project.tags.map((tag, idx) => (
+                                                        <span
+                                                            key={idx}
+                                                            className="rounded-xl border border-white/50 bg-white/50 px-3.5 py-1.5 text-xs font-medium text-slate-600 backdrop-blur-sm transition-colors group-hover:bg-primary/5 group-hover:text-primary group-hover:border-primary/20"
+                                                        >
+                                                            {tag}
+                                                        </span>
+                                                    ))}
+                                                </div>
                                             )}
-                                            {project.github && (
-                                                <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/50 px-6 py-2.5 text-sm font-semibold text-text-main transition-all hover:bg-slate-50">
-                                                    <Code2 className="h-4 w-4" />
-                                                    <span>Код</span>
-                                                </a>
-                                            )}
+
+                                            <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-white/40">
+                                                {project.links?.demo && (
+                                                    <a
+                                                        href={project.links.demo}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-primary/40"
+                                                    >
+                                                        {t('portfolio_page.view_project')}
+                                                        <ArrowUpRight className="h-4.5 w-4.5" />
+                                                    </a>
+                                                )}
+
+                                                {project.links?.github && (
+                                                    <a
+                                                        href={project.links.github}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="inline-flex items-center gap-2 rounded-full border-2 border-slate-200/60 bg-white/40 px-6 py-3 text-sm font-bold text-text-main backdrop-blur-md transition-all duration-300 hover:border-slate-300 hover:bg-white/80"
+                                                    >
+                                                        <Code2 className="h-4.5 w-4.5 text-slate-500" />
+                                                        {t('portfolio_page.view_code')}
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-20 text-text-muted">
-                        Проекты не найдены.
-                    </div>
-                )}
+                                </motion.article>
+                            ))}
+                        </AnimatePresence>
+                    </motion.div>
+
+                    {/* Состояние "Пусто" */}
+                    <AnimatePresence>
+                        {filteredProjects.length === 0 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="py-20 text-center"
+                            >
+                                <LayoutGrid className="mx-auto mb-4 h-12 w-12 text-primary/40" />
+                                <h3 className="text-2xl font-bold text-text-main mb-2">{t('portfolio_page.empty_title')}</h3>
+                                <p className="text-text-muted">{t('portfolio_page.empty_desc')}</p>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
         </div>
     );
