@@ -1,97 +1,133 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Binary, Cpu, Server, Rocket, Code, Package } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Binary, Cpu, Server, Rocket, Code, Package, Sparkles, ArrowRight } from 'lucide-react';
 
 const PathPage = () => {
     const { t } = useTranslation();
 
+    const defaultSkills = ['React 18+', 'Next.js 14', 'TypeScript', 'Tailwind CSS', 'Node.js', 'C# .NET', 'SQL / PostgreSQL', 'Flutter', 'IoT / Real-time'];
+    const skillsList = t('path_page.skills_list', { returnObjects: true, defaultValue: defaultSkills });
+    const safeSkillsArray = Array.isArray(skillsList) ? skillsList : defaultSkills;
+
     const timelineData = [
         {
-            id: 1, date: t('path_page.timeline_1_date'), title: t('path_page.timeline_1_title'), description: t('path_page.timeline_1_desc'),
-            icon: <Binary className="w-6 h-6 text-white group-hover:rotate-12" strokeWidth={2} />, techStack: ['Java', 'C++', 'C#', 'PHP']
+            id: 1,
+            date: t('path_page.timeline_1_date', '2020–2021'),
+            title: t('path_page.timeline_1_title', 'School Engineering Start'),
+            description: t('path_page.timeline_1_desc', 'First introduction to programming via Java.'),
+            icon: <Binary className="w-6 h-6 text-primary" strokeWidth={2} />,
+            techStack: ['Java', 'C++', 'C#', 'PHP']
         },
         {
-            id: 2, date: t('path_page.timeline_2_date'), title: t('path_page.timeline_2_title'), description: t('path_page.timeline_2_desc'),
-            icon: <Code className="w-6 h-6 text-white group-hover:rotate-12" strokeWidth={2} />, techStack: ['C# MAUI', 'IoT']
+            id: 2,
+            date: t('path_page.timeline_2_date', 'Jan–May 2023'),
+            title: t('path_page.timeline_2_title', 'First Commercial Dev'),
+            description: t('path_page.timeline_2_desc', 'Worked at Schiebel Antriebstechnik.'),
+            icon: <Code className="w-6 h-6 text-primary" strokeWidth={2} />,
+            techStack: ['C# MAUI', 'IoT']
         },
         {
-            id: 3, date: t('path_page.timeline_3_date'), title: t('path_page.timeline_3_title'), description: t('path_page.timeline_3_desc'),
-            icon: <Cpu className="w-6 h-6 text-white group-hover:rotate-12" strokeWidth={2} />, techStack: ['Flutter', 'VESC', 'GPS']
+            id: 3,
+            date: t('path_page.timeline_3_date', 'May–Oct 2023'),
+            title: t('path_page.timeline_3_title', 'IoT Project Lead'),
+            description: t('path_page.timeline_3_desc', 'Led Flutter app dev for boat VESC motors.'),
+            icon: <Cpu className="w-6 h-6 text-primary" strokeWidth={2} />,
+            techStack: ['Flutter', 'VESC', 'GPS']
         },
         {
-            id: 4, date: t('path_page.timeline_4_date'), title: t('path_page.timeline_4_title'), description: t('path_page.timeline_4_desc'),
-            icon: <Server className="w-6 h-6 text-white group-hover:rotate-12" strokeWidth={2} />, techStack: ['C# .NET', 'SQL', 'ERP']
+            id: 4,
+            date: t('path_page.timeline_4_date', 'Oct 2023 – Present'),
+            title: t('path_page.timeline_4_title', 'European Enterprise Logistics'),
+            description: t('path_page.timeline_4_desc', 'Supporting large ERP system for 6 countries.'),
+            icon: <Server className="w-6 h-6 text-primary" strokeWidth={2} />,
+            techStack: ['C# .NET', 'SQL', 'ERP']
         },
         {
-            id: 5, date: t('path_page.timeline_5_date'), title: t('path_page.timeline_5_title'), description: t('path_page.timeline_5_desc'),
-            icon: <Rocket className="w-6 h-6 text-white group-hover:rotate-12" strokeWidth={2} />, techStack: ['React', 'PHP', 'Landing Pages']
+            id: 5,
+            date: t('path_page.timeline_5_date', 'Dec 2024 – Present'),
+            title: t('path_page.timeline_5_title', 'Freelance & Landing Pages'),
+            description: t('path_page.timeline_5_desc', 'Started creating fast React landing pages.'),
+            icon: <Rocket className="w-6 h-6 text-primary" strokeWidth={2} />,
+            techStack: ['React', 'PHP', 'Landing Pages']
         },
         {
-            id: 6, date: t('path_page.timeline_6_date'), title: t('path_page.timeline_6_title'), description: t('path_page.timeline_6_desc'),
-            icon: <Package className="w-6 h-6 text-white group-hover:rotate-12" strokeWidth={2} />, techStack: ['React', 'E-commerce', 'SEO']
+            id: 6,
+            date: t('path_page.timeline_6_date', 'Oct 2025 – Present'),
+            title: t('path_page.timeline_6_title', 'E-commerce & Platforms'),
+            description: t('path_page.timeline_6_desc', 'Moving towards complex projects and stores.'),
+            icon: <Package className="w-6 h-6 text-primary" strokeWidth={2} />,
+            techStack: ['React', 'E-commerce', 'SEO']
         }
     ];
 
     return (
-        <div className="relative py-20 md:py-28 bg-bg-base min-h-screen overflow-hidden">
-            {/* Фоновые градиентные пятна */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        // Убрали bg-bg-base! Теперь страница прозрачная
+        <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full">
 
-            <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 max-w-7xl mx-auto z-10">
+            {/* Ограничитель для фоновых пятен, чтобы они не ломали верстку */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                <div className="absolute top-[-5%] left-[-10%] h-[600px] w-[600px] rounded-full bg-primary/10 blur-[120px]" />
+                <div className="absolute top-[40%] right-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-400/10 blur-[150px]" />
+                <div className="absolute bottom-[-10%] left-[20%] h-[600px] w-[600px] rounded-full bg-primary/5 blur-[150px]" />
+            </div>
 
-                {/* Заголовок */}
-                <div className="text-center mb-28 max-w-4xl mx-auto">
-                    <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider mb-6 border border-primary/20">
-                        {t('path_page.badge')}
-                    </span>
-                    <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-500 to-primary">
-                        {t('path_page.title')}
+            <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+                <div className="mx-auto mb-20 max-w-3xl text-center">
+                    <div className="inline-flex items-center justify-center gap-2 mb-6 rounded-full border border-white/40 bg-white/50 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-primary shadow-sm backdrop-blur-md">
+                        <Sparkles className="h-4 w-4" />
+                        {t('path_page.badge', 'My Experience')}
+                    </div>
+                    <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-text-main md:text-7xl">
+                        {t('path_page.title', 'My Engineering Journey')}
                     </h1>
-                    <p className="text-xl md:text-2xl text-text-muted font-medium leading-relaxed">
-                        {t('path_page.subtitle')}
+                    <p className="text-lg leading-relaxed text-text-muted md:text-xl">
+                        {t('path_page.subtitle', 'From first experiments to enterprise systems.')}
                     </p>
                 </div>
 
-                {/* Таймлайн */}
-                <div className="relative mb-24">
-                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-2 h-full bg-gradient-to-b from-primary/10 via-primary/50 to-primary/10 rounded-full"></div>
-                    <div className="space-y-20 md:space-y-32">
+                <div className="relative mb-32 max-w-5xl mx-auto">
+                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-gradient-to-b from-primary/10 via-primary/30 to-transparent"></div>
+
+                    <div className="space-y-12 md:space-y-24">
                         {timelineData.map((item, index) => {
                             const isEven = index % 2 === 0;
 
                             return (
-                                <div key={item.id} className="relative flex flex-col md:flex-row items-center justify-between group mb-12 md:mb-0">
+                                <div key={item.id} className="relative flex flex-col md:flex-row items-center justify-between group">
+                                    <div className="md:hidden absolute left-[31px] top-16 bottom-[-3rem] w-px bg-gradient-to-b from-primary/30 to-transparent last:hidden"></div>
 
-                                    {/* Мобильная линия */}
-                                    <div className="md:hidden absolute left-[42px] top-20 bottom-[-3rem] w-1 bg-gradient-to-b from-primary/50 to-transparent last:hidden"></div>
-
-                                    {/* Иконка всегда по центру на десктопе */}
-                                    <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-[0_0_25px_rgba(0,0,0,0.2)] border-4 border-bg-base z-20
-                group-hover:scale-125 group-hover:shadow-[0_0_40px_rgba(var(--primary),0.6)] transition-all duration-500">
-                                        <div className="absolute inset-0 rounded-full bg-primary opacity-0 group-hover:animate-ping"></div>
-                                        <div className="relative z-10">{item.icon}</div>
+                                    <div className="absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 w-16 h-16 rounded-full border border-white/60 bg-white/50 backdrop-blur-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:bg-white z-20">
+                                        <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:animate-ping"></div>
+                                        {item.icon}
                                     </div>
 
-                                    {/* Карточка */}
-                                    <div className={`w-full md:w-[45%] pl-24 md:pl-0 ${isEven ? 'md:ml-auto md:text-right' : 'md:mr-auto md:text-left'}`}>
-                                        <div className="relative p-10 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_25px_50px_rgb(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500">
-                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-3xl"></div>
+                                    <div className={`w-full md:w-[45%] pl-20 md:pl-0 ${isEven ? 'md:ml-auto md:text-left' : 'md:mr-auto md:text-right'}`}>
+                                        <div className="relative flex flex-col overflow-hidden rounded-[2.5rem] border border-white/50 bg-white/30 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-white/80">
 
-                                            <span className="inline-block px-5 py-2 bg-text-main text-white text-sm font-bold rounded-full mb-6 shadow-md">
-                        {item.date}
-                    </span>
-                                            <h3 className="text-2xl md:text-3xl font-bold text-text-main mb-5 leading-tight">
+                                            <div className={`mb-6 flex ${isEven ? 'justify-start' : 'justify-start md:justify-end'}`}>
+                                                <span className="inline-flex items-center rounded-full border border-white/30 bg-white/70 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm backdrop-blur-md">
+                                                    {item.date}
+                                                </span>
+                                            </div>
+
+                                            <h3 className="mb-4 text-2xl font-extrabold text-text-main transition-colors duration-300 group-hover:text-primary">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-text-muted leading-relaxed text-base md:text-lg mb-8">
+
+                                            <p className="mb-8 text-base leading-relaxed text-text-muted">
                                                 {item.description}
                                             </p>
-                                            <div className={`flex flex-wrap gap-2 ${isEven ? 'justify-end' : 'justify-start'}`}>
+
+                                            <div className={`flex flex-wrap gap-2 ${isEven ? 'justify-start' : 'justify-start md:justify-end'}`}>
                                                 {item.techStack.map((tech, i) => (
-                                                    <span key={i} className="px-3 py-1.5 bg-primary/5 text-primary text-sm font-semibold rounded-lg border border-primary/10 hover:bg-primary hover:text-white transition-colors">
-                                {tech}
-                            </span>
+                                                    <span
+                                                        key={i}
+                                                        className="rounded-xl border border-white/50 bg-white/50 px-3.5 py-1.5 text-xs font-medium text-slate-600 backdrop-blur-sm transition-colors group-hover:bg-primary/5 group-hover:text-primary group-hover:border-primary/20"
+                                                    >
+                                                        {tech}
+                                                    </span>
                                                 ))}
                                             </div>
                                         </div>
@@ -99,28 +135,47 @@ const PathPage = () => {
                                 </div>
                             );
                         })}
-
                     </div>
                 </div>
 
-                {/* Блок навыков внизу */}
-                <div className="text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-text-main mb-6">
-                        {t('path_page.skills_title')}
+                <div className="text-center mb-24">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-text-main mb-6">
+                        {t('path_page.skills_title', 'My Current Stack')}
                     </h2>
-                    <p className="text-xl text-text-muted mb-12 max-w-2xl mx-auto">
-                        {t('path_page.skills_desc')}
+                    <p className="text-lg text-text-muted mb-12 max-w-2xl mx-auto">
+                        {t('path_page.skills_desc', 'Full cycle web development.')}
                     </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 max-w-4xl mx-auto">
-                        {t('path_page.skills_list', { returnObjects: true }).map((skill, i) => (
-                            <div key={i} className="group p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/30 hover:bg-white hover:shadow-lg transition-all duration-300">
-                                <span className="text-lg font-bold text-text-main group-hover:text-primary transition-colors">
+
+                    <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+                        {safeSkillsArray.map((skill, i) => (
+                            <div
+                                key={i}
+                                className="group px-6 py-3 bg-white/40 backdrop-blur-md rounded-full border border-white/50 shadow-sm hover:bg-white hover:border-primary/30 hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <span className="text-sm font-bold text-slate-700 group-hover:text-primary transition-colors">
                                     {skill}
                                 </span>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                <div className="mx-auto max-w-3xl rounded-[3rem] border border-white/50 bg-white/30 p-12 text-center shadow-lg backdrop-blur-2xl">
+                    <h3 className="mb-4 text-3xl font-extrabold text-text-main">
+                        {t('story_page.cta_title', 'Ready to discuss your project?')}
+                    </h3>
+                    <p className="mb-8 text-text-muted">
+                        {t('story_page.cta_text', 'Want to create a modern website or app? Write to me.')}
+                    </p>
+                    <Link
+                        to="/contact"
+                        className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-primary/40"
+                    >
+                        {t('nav.cta', 'Contact Me')}
+                        <ArrowRight className="h-4.5 w-4.5" />
+                    </Link>
+                </div>
+
             </div>
         </div>
     );

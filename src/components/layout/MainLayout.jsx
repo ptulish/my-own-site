@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 
 const MainLayout = () => {
     return (
-        <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900">
-            {/* Временный Header, потом заменим на сложный из Educore */}
+        <div className="min-h-screen bg-bg-base text-text-main flex flex-col font-sans selection:bg-primary/20 selection:text-primary">            {/* Временный Header, потом заменим на сложный из Educore */}
             <Header /> {/* Вставляем сюда */}
 
             {/* Здесь будут рендериться сами страницы */}
@@ -14,9 +14,7 @@ const MainLayout = () => {
             </main>
 
             {/* Простой Footer */}
-            <footer className="w-full p-6 text-center bg-slate-900 text-slate-400">
-                <p>© 2026. Разработано с любовью к коду.</p>
-            </footer>
+            <Footer />
         </div>
     );
 };

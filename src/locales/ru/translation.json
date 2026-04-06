@@ -1,4 +1,10 @@
 {
+  "footer": {
+    "brand": "PAVELS TULISS",
+    "rights": "Все права защищены.",
+    "made_with": "Сделано с",
+    "location": "в Риге, Латвия"
+  },
   "nav": {
     "portfolio": "Работы",
     "path": "Мой путь",
