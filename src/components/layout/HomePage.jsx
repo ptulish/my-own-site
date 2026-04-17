@@ -6,6 +6,7 @@ import ContactCTA from "../sections/Contact.jsx";
 import PricingSection from "../sections/PricingSection.jsx";
 import FAQSection from "../sections/FAQSection.jsx";
 import HomeSectionNav from "../sections/HomeSectionNav.jsx";
+import Testimonials from "../sections/Testimonials.jsx";
 
 const HomePage = () => {
     return (
@@ -18,6 +19,10 @@ const HomePage = () => {
 
             <section id="features">
                 <Features />
+            </section>
+
+            <section id="testimonials">
+                <Testimonials />
             </section>
 
             <section id="work">

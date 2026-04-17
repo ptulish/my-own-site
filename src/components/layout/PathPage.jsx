@@ -62,17 +62,20 @@ const PathPage = () => {
     ];
 
     return (
-        // Убрали bg-bg-base! Теперь страница прозрачная
-        <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full">
+        // ВАЖНО: Добавил w-full и убрал overflow-hidden (чтобы блюры могли выходить за края, если нужно, хотя лучше оставить overflow-x-hidden на уровне body)
+        <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full flex flex-col items-center">
 
-            {/* Ограничитель для фоновых пятен, чтобы они не ломали верстку */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            {/* ВАЖНО: fixed вместо absolute! */}
+            {/* fixed привяжет блюры к окну браузера, а не к контейнеру страницы. */}
+            {/* Это гарантирует, что они не будут обрезаться рамками страницы. */}
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
                 <div className="absolute top-[-5%] left-[-10%] h-[600px] w-[600px] rounded-full bg-primary/10 blur-[120px]" />
                 <div className="absolute top-[40%] right-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-400/10 blur-[150px]" />
                 <div className="absolute bottom-[-10%] left-[20%] h-[600px] w-[600px] rounded-full bg-primary/5 blur-[150px]" />
             </div>
 
-            <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            {/* Контент страницы */}
+            <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
 
                 <div className="mx-auto mb-20 max-w-3xl text-center">
                     <div className="inline-flex items-center justify-center gap-2 mb-6 rounded-full border border-white/40 bg-white/50 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-primary shadow-sm backdrop-blur-md">

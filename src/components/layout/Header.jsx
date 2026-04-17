@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, Check, MessageCircleMore, Menu, X } from 'lucide-react';
-import logoUrl from '../../assets/logo.png';
+import logoUrl from '../../../public/logo.png';
 
 const Header = () => {
     const { t, i18n } = useTranslation();

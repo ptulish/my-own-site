@@ -27,8 +27,10 @@ const Hero = () => {
     const techStack = t('hero.tech_items', { returnObjects: true });
 
     return (
-        <section className="relative isolate overflow-hidden bg-bg-base pb-24 pt-24 md:pb-32 md:pt-32">
-            <div className="pointer-events-none absolute inset-0">
+        <section className="relative isolate w-full pb-24 pt-32 md:pb-32 md:pt-40">
+
+            {/* Фоновые свечения (теперь они не обрезаются) */}
+            <div className="pointer-events-none absolute inset-0 z-0">
                 <div className="absolute left-[8%] top-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
                 <div className="absolute right-[10%] top-[18%] h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
                 <div className="absolute bottom-[5%] left-[22%] h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />

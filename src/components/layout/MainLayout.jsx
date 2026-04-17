@@ -1,20 +1,22 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 
 const MainLayout = () => {
     return (
-        <div className="min-h-screen bg-bg-base text-text-main flex flex-col font-sans selection:bg-primary/20 selection:text-primary">            {/* Временный Header, потом заменим на сложный из Educore */}
-            <Header /> {/* Вставляем сюда */}
+        <div className="min-h-screen bg-bg-base text-text-main flex flex-col font-sans selection:bg-primary/20 selection:text-primary">
 
-            {/* Здесь будут рендериться сами страницы */}
-            <main className="flex-1 w-full max-w-10xl mx-auto p-4 md:p-8">
+            <Header />
+
+            {/* ИСПРАВЛЕНО: Убраны p-4, md:p-8 и ограничения по ширине. */}
+            {/* Теперь `<main>` занимает 100% пространства, и страницы могут рисовать свой фон от края до края. */}
+            <main className="flex-1 w-full flex flex-col">
                 <Outlet />
             </main>
 
-            {/* Простой Footer */}
             <Footer />
+
         </div>
     );
 };

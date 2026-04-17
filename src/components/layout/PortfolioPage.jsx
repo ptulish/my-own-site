@@ -29,16 +29,16 @@ const PortfolioPage = () => {
 
     const categoryInfo = {
         all: {
-            label: t('portfolio_page.categories.all.label'),
-            description: t('portfolio_page.categories.all.description')
+            label: t('portfolio_page.categories.all.label', 'All'),
+            description: t('portfolio_page.categories.all.description', 'From complex platforms to fast landing pages.')
         },
         landing: {
-            label: t('portfolio_page.categories.landing.label'),
-            description: t('portfolio_page.categories.landing.description')
+            label: t('portfolio_page.categories.landing.label', 'Landing Pages'),
+            description: t('portfolio_page.categories.landing.description', 'Fast single-page websites.')
         },
         ecommerce: {
-            label: t('portfolio_page.categories.ecommerce.label'),
-            description: t('portfolio_page.categories.ecommerce.description')
+            label: t('portfolio_page.categories.ecommerce.label', 'E-commerce'),
+            description: t('portfolio_page.categories.ecommerce.description', 'Full-fledged online stores.')
         }
     };
 
@@ -52,17 +52,19 @@ const PortfolioPage = () => {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-bg-base py-24 flex flex-col items-center justify-center">
+            <div className="min-h-screen pt-32 pb-24 flex flex-col items-center justify-center w-full">
                 <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary mb-4" />
-                <p className="text-text-muted animate-pulse font-medium">{t('portfolio_page.loading')}</p>
+                <p className="text-text-muted animate-pulse font-medium">{t('portfolio_page.loading', 'Loading...')}</p>
             </div>
         );
     }
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-bg-base py-16 md:py-24">
-            {/* Фоновые свечения */}
-            <div className="absolute inset-0 pointer-events-none">
+        // ИСПРАВЛЕНИЕ 1: Убрал bg-bg-base и overflow-hidden. Добавил w-full и отступы сверху (pt-32), чтобы хедер не перекрывал контент.
+        <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full flex flex-col items-center">
+
+            {/* ИСПРАВЛЕНИЕ 2: Свечения теперь fixed. Они привязаны к экрану, а не к блоку. Больше не обрезаются! */}
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
                 <div className="absolute top-[-10%] left-[10%] h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px]" />
                 <div className="absolute bottom-[10%] right-[10%] h-[600px] w-[600px] rounded-full bg-cyan-400/10 blur-[150px]" />
             </div>
@@ -73,13 +75,12 @@ const PortfolioPage = () => {
                 <div className="mx-auto mb-16 max-w-3xl text-center">
                     <div className="inline-flex items-center justify-center gap-2 mb-6 rounded-full border border-white/40 bg-white/50 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-primary shadow-sm backdrop-blur-md">
                         <Sparkles className="h-4 w-4" />
-                        {t('portfolio_page.badge')}
+                        {t('portfolio_page.badge', 'Cases')}
                     </div>
                     <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-text-main md:text-7xl">
-                        {t('portfolio_page.title')}
+                        {t('portfolio_page.title', 'My Works')}
                     </h1>
 
-                    {/* Фиксированная высота для описания, чтобы контент не прыгал */}
                     <div className="min-h-[80px] md:min-h-[60px] flex items-center justify-center overflow-hidden">
                         <AnimatePresence mode="wait">
                             <motion.p
@@ -119,19 +120,21 @@ const PortfolioPage = () => {
                 </div>
 
                 {/* Сетка проектов */}
-                <div className="min-h-[400px]">
+                {/* ИСПРАВЛЕНИЕ 3: min-h-[800px] не дает футеру "подпрыгивать" во время исчезновения старых карточек */}
+                <div className="min-h-[800px] w-full">
                     <motion.div
                         layout
                         className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10"
                     >
-                        <AnimatePresence>
+                        {/* ИСПРАВЛЕНИЕ 4: mode="popLayout" заставляет исчезающие карточки сразу освобождать место для новых, убирая дерганье */}
+                        <AnimatePresence mode="popLayout">
                             {filteredProjects.map((project) => (
                                 <motion.article
                                     key={project._id}
                                     layout
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                                    exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.2 } }}
                                     transition={{
                                         type: "spring",
                                         stiffness: 260,
@@ -197,7 +200,7 @@ const PortfolioPage = () => {
                                                         rel="noreferrer"
                                                         className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-primary/40"
                                                     >
-                                                        {t('portfolio_page.view_project')}
+                                                        {t('portfolio_page.view_project', 'View Project')}
                                                         <ArrowUpRight className="h-4.5 w-4.5" />
                                                     </a>
                                                 )}
@@ -210,7 +213,7 @@ const PortfolioPage = () => {
                                                         className="inline-flex items-center gap-2 rounded-full border-2 border-slate-200/60 bg-white/40 px-6 py-3 text-sm font-bold text-text-main backdrop-blur-md transition-all duration-300 hover:border-slate-300 hover:bg-white/80"
                                                     >
                                                         <Code2 className="h-4.5 w-4.5 text-slate-500" />
-                                                        {t('portfolio_page.view_code')}
+                                                        {t('portfolio_page.view_code', 'Code')}
                                                     </a>
                                                 )}
                                             </div>
@@ -231,8 +234,8 @@ const PortfolioPage = () => {
                                 className="py-20 text-center"
                             >
                                 <LayoutGrid className="mx-auto mb-4 h-12 w-12 text-primary/40" />
-                                <h3 className="text-2xl font-bold text-text-main mb-2">{t('portfolio_page.empty_title')}</h3>
-                                <p className="text-text-muted">{t('portfolio_page.empty_desc')}</p>
+                                <h3 className="text-2xl font-bold text-text-main mb-2">{t('portfolio_page.empty_title', 'Empty')}</h3>
+                                <p className="text-text-muted">{t('portfolio_page.empty_desc', 'No projects yet.')}</p>
                             </motion.div>
                         )}
                     </AnimatePresence>

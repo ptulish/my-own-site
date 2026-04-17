@@ -5,19 +5,24 @@ import {
     BriefcaseBusiness,
     BadgeEuro,
     CircleHelp,
-    MessageCircleMore
+    MessageCircleMore,
+    MessageSquare,
 } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 
-const sections = [
-    { id: 'hero', label: 'Start', icon: Sparkles },
-    { id: 'features', label: 'Why me', icon: Layers3 },
-    { id: 'work', label: 'Work', icon: BriefcaseBusiness },
-    { id: 'pricing', label: 'Pricing', icon: BadgeEuro },
-    { id: 'faq', label: 'FAQ', icon: CircleHelp },
-    { id: 'contact', label: 'Contact', icon: MessageCircleMore }
-];
 
 const HomeSectionNav = () => {
+    const { t } = useTranslation();
+
+    const sections = [
+        { id: 'hero', label: t('nav.home', 'Start'), icon: Sparkles },
+        { id: 'features', label: t('nav.why-me', 'Why me'), icon: Layers3 },
+        { id: 'testimonials', label: t('nav.testimonials', 'Testimonials'), icon: MessageSquare },
+        { id: 'work', label: t('nav.work', 'Work'), icon: BriefcaseBusiness },
+        { id: 'pricing', label: t('nav.pricing', 'Pricing'), icon: BadgeEuro },
+        { id: 'faq', label: t('nav.faq', 'FAQ'), icon: CircleHelp },
+        { id: 'contact', label: t('nav.contact', 'Contact'), icon: MessageCircleMore }
+    ];
     const [activeSection, setActiveSection] = useState('hero');
 
     useEffect(() => {
@@ -53,7 +58,7 @@ const HomeSectionNav = () => {
 
         element.scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
+            block: 'center' // Изменили 'start' на 'center'
         });
     };
 
