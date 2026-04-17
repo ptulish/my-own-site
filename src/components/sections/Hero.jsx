@@ -96,11 +96,16 @@ const Hero = () => {
 
                     {/* Правая нижняя часть */}
                     <div className="group relative">
-                        <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary/10 via-cyan-400/10 to-transparent opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-100" />
+                        {/* 1. Свечение теперь ВНЕ контейнера с overflow-hidden */}
+                        <div className="absolute -inset-10 rounded-[2.5rem] bg-gradient-to-br from-primary/20 via-cyan-400/20 to-transparent opacity-0 blur-3xl transition-all duration-500 group-hover:opacity-100" />
 
-                        <div className="relative overflow-hidden rounded-[2rem] border border-white/40 bg-white/70 p-7 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:rotate-[0.4deg] group-hover:shadow-[0_28px_80px_rgba(15,23,42,0.14)] md:p-8">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.55),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(1,105,111,0.08),transparent_30%)] transition-transform duration-500 group-hover:scale-105" />
+                        {/* 2. Основной контейнер БЕЗ overflow-hidden, чтобы тени дышали */}
+                        <div className="relative rounded-[2rem] border border-white/40 bg-white/70 p-7 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:rotate-[0.4deg] group-hover:shadow-[0_40px_100px_rgba(1,105,111,0.2)] md:p-8">
 
+                            {/* 3. Внутренний слой для overflow-hidden (если он реально нужен для бликов) */}
+                            <div className="absolute inset-0 overflow-hidden rounded-[2rem] pointer-events-none">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.55),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(1,105,111,0.08),transparent_30%)] transition-transform duration-500 group-hover:scale-110" />
+                            </div>
                             <div className="relative z-10">
                                 <div className="mb-6 flex items-center justify-between gap-4">
                                     <div>
