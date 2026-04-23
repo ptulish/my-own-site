@@ -1,32 +1,39 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
-import Hero from "./components/sections/Hero.jsx";
 import HomePage from "./components/layout/HomePage.jsx";
-import PortfolioPage from "./components/layout/PortfolioPage.jsx";
-import PathPage from "./components/layout/PathPage.jsx";
-import StoryPage from "./components/layout/StoryPage.jsx";
-import AdminPage from "./components/layout/AdminPage.jsx";
 
-const Story = () => <h1 className="text-4xl font-bold mt-10">Моя личная история</h1>;
+// 1. Ленивая загрузка второстепенных страниц и админки
+const Hero = lazy(() => import('./components/sections/Hero.jsx'));
+const PortfolioPage = lazy(() => import('./components/layout/PortfolioPage.jsx'));
+const PathPage = lazy(() => import('./components/layout/PathPage.jsx'));
+const StoryPage = lazy(() => import('./components/layout/StoryPage.jsx'));
+const AdminPage = lazy(() => import('./components/layout/AdminPage.jsx'));
+
+// 2. Лоадер, который будет показываться доли секунды, пока подгружается JS-код страницы
+const PageLoader = () => (
+    <div className="flex min-h-[50vh] items-center justify-center">
+      <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
+    </div>
+);
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      { path: "/", element: <HomePage /> },
-      { path: "/hero", element: <Hero /> },
-      { path: "/portfolio", element: <PortfolioPage /> },
-      { path: "/path", element: <PathPage /> },
-      { path: "/story", element: <StoryPage /> },
+      { path: "/", element: <HomePage /> }, // Главная грузится сразу!
+      // 3. Оборачиваем ленивые роуты в Suspense
+      { path: "/hero", element: <Suspense fallback={<PageLoader />}><Hero /></Suspense> },
+      { path: "/portfolio", element: <Suspense fallback={<PageLoader />}><PortfolioPage /></Suspense> },
+      { path: "/path", element: <Suspense fallback={<PageLoader />}><PathPage /></Suspense> },
+      { path: "/story", element: <Suspense fallback={<PageLoader />}><StoryPage /></Suspense> },
     ],
   },
   {
-    // 2. Добавляем отдельный роут для админки
-    // Звездочка (*) обязательна, так как Sanity использует свою внутреннюю навигацию
+    // Админка очень тяжелая, теперь ее код не будет грузиться у обычных посетителей сайта
     path: "/admin/*",
-    element: <AdminPage />,
+    element: <Suspense fallback={<PageLoader />}><AdminPage /></Suspense>,
   }
 ]);
 

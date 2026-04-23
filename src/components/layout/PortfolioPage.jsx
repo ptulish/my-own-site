@@ -150,8 +150,11 @@ const PortfolioPage = () => {
 
                                         {project.image ? (
                                             <img
-                                                src={urlFor(project.image).width(1200).url()}
+                                                src={urlFor(project.image).width(800).format('webp').quality(80).url()}
                                                 alt={project.title}
+                                                loading="lazy"
+                                                width="800"
+                                                height="600" // Примерная высота для сохранения пропорций и избежания сдвигов (CLS)
                                                 className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                                             />
                                         ) : (

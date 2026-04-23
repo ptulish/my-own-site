@@ -89,6 +89,9 @@ const Header = () => {
                                         <img
                                             src={logoUrl}
                                             alt="Pavels Tuliss"
+                                            width="40"
+                                            height="40"
+                                            fetchPriority="high"
                                             className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                                         />
                                     </div>
