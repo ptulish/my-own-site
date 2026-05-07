@@ -205,5 +205,15 @@
     "cta_title": "Ready to discuss your project",
     "cta_text": "Want to create a modern website, mobile app, or optimize logistics? Write to me — let's build it together.",
     "cta_button": "Discuss project"
+  },
+  "seo": {
+    "home_title": "Home",
+    "home_description": "Professional interfaces development from Pavels Tuliss.",
+    "portfolio_title": "Portfolio",
+    "portfolio_description": "Selected frontend projects, landing pages, and e-commerce work by Pavels Tuliss.",
+    "path_title": "My Path",
+    "path_description": "Engineering journey, experience timeline, and current technology stack of Pavels Tuliss.",
+    "story_title": "My Story",
+    "story_description": "How Pavels Tuliss moved from first coding projects to industrial systems and modern web development."
   }
 }

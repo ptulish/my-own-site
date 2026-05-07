@@ -17,11 +17,16 @@ const resources = {
     }
 };
 
+const supportedLanguages = ['ru', 'en', 'lv'];
+const searchParams = new URLSearchParams(window.location.search);
+const queryLanguage = searchParams.get('lang');
+const initialLanguage = supportedLanguages.includes(queryLanguage) ? queryLanguage : 'en';
+
 i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: 'ru',
+        lng: initialLanguage,
         fallbackLng: 'en',
         interpolation: {
             escapeValue: false

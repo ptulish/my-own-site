@@ -205,5 +205,15 @@
     "cta_title": "Gatavs apspriest jūsu projektu",
     "cta_text": "Vēlaties izveidot mūsdienīgu vietni, lietotni vai optimizēt loģistiku? Rakstiet man — izveidosim to kopā.",
     "cta_button": "Apspriedīsim projektu"
+  },
+  "seo": {
+    "home_title": "Sākums",
+    "home_description": "Profesionāla saskarņu izstrāde no Pavels Tuliss.",
+    "portfolio_title": "Portfelis",
+    "portfolio_description": "Izvēlēti frontend projekti, mērķlapas un e-komercijas risinājumi no Pavels Tuliss.",
+    "path_title": "Mans ceļš",
+    "path_description": "Inženiera ceļš, pieredzes laika līnija un pašreizējais tehnoloģiju steks no Pavels Tuliss.",
+    "story_title": "Mans stāsts",
+    "story_description": "Kā Pavels Tuliss no pirmajiem programmēšanas projektiem nonāca līdz rūpnieciskajām sistēmām un modernai tīmekļa izstrādei."
   }
 }

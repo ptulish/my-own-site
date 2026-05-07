@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, Check, MessageCircleMore, Menu, X } from 'lucide-react';
 import logoUrl from '../../../public/logo.png';
 
 const Header = () => {
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
+    const location = useLocation();
     const [isLangOpen, setIsLangOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const desktopLangRef = useRef(null);
@@ -17,13 +19,19 @@ const Header = () => {
         { code: 'lv', label: 'LV', full: 'Latviešu' }
     ];
 
-    const normalizedLanguage = i18n.language?.slice(0, 2) || 'ru';
+    const normalizedLanguage = i18n.language?.slice(0, 2) || 'en';
 
     const currentLanguage =
         languages.find((lang) => lang.code === normalizedLanguage) || languages[0];
 
     const changeLanguage = (langCode) => {
         i18n.changeLanguage(langCode);
+        const nextSearchParams = new URLSearchParams(location.search);
+        nextSearchParams.set('lang', langCode);
+        navigate(
+            { pathname: location.pathname, search: `?${nextSearchParams.toString()}` },
+            { replace: true }
+        );
         setIsLangOpen(false);
         setIsMobileMenuOpen(false);
     };

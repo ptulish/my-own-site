@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Binary, Cpu, Server, Rocket, Code, Package, Sparkles, ArrowRight } from 'lucide-react';
+import SEO from '../SEO.jsx';
 
 const PathPage = () => {
     const { t } = useTranslation();
@@ -62,8 +63,14 @@ const PathPage = () => {
     ];
 
     return (
-        // ВАЖНО: Добавил w-full и убрал overflow-hidden (чтобы блюры могли выходить за края, если нужно, хотя лучше оставить overflow-x-hidden на уровне body)
-        <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full flex flex-col items-center">
+        <>
+            <SEO
+                title={t('seo.path_title', 'My Path')}
+                description={t('seo.path_description', 'Engineering journey, experience timeline, and current technology stack of Pavels Tuliss.')}
+                url="/path"
+            />
+            {/* ВАЖНО: Добавил w-full и убрал overflow-hidden (чтобы блюры могли выходить за края, если нужно, хотя лучше оставить overflow-x-hidden на уровне body) */}
+            <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full flex flex-col items-center">
 
             {/* ВАЖНО: fixed вместо absolute! */}
             {/* fixed привяжет блюры к окну браузера, а не к контейнеру страницы. */}
@@ -180,7 +187,8 @@ const PathPage = () => {
                 </div>
 
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

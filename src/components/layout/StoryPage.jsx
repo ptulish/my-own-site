@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mail, ArrowRight } from 'lucide-react';
+import SEO from '../SEO.jsx';
 
 const StoryPage = () => {
     const { t } = useTranslation();
@@ -34,7 +35,13 @@ const StoryPage = () => {
     ];
 
     return (
-        <div className="relative py-20 md:py-28 bg-gradient-to-br from-bg-base via-primary/5 to-blue-50 min-h-screen overflow-hidden">
+        <>
+            <SEO
+                title={t('seo.story_title', 'My Story')}
+                description={t('seo.story_description', 'How Pavels Tuliss moved from first coding projects to industrial systems and modern web development.')}
+                url="/story"
+            />
+            <div className="relative py-20 md:py-28 bg-gradient-to-br from-bg-base via-primary/5 to-blue-50 min-h-screen overflow-hidden">
             {/* Фоновые элементы */}
             <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-32 left-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
@@ -89,7 +96,8 @@ const StoryPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

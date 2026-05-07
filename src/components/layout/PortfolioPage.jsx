@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, Code2, Sparkles, LayoutGrid } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { client, urlFor } from '../../client';
+import SEO from '../SEO.jsx';
 
 const PortfolioPage = () => {
     const { t, i18n } = useTranslation();
@@ -60,8 +61,14 @@ const PortfolioPage = () => {
     }
 
     return (
-        // ИСПРАВЛЕНИЕ 1: Убрал bg-bg-base и overflow-hidden. Добавил w-full и отступы сверху (pt-32), чтобы хедер не перекрывал контент.
-        <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full flex flex-col items-center">
+        <>
+            <SEO
+                title={t('seo.portfolio_title', 'Portfolio')}
+                description={t('seo.portfolio_description', 'Selected frontend projects, landing pages, and e-commerce work by Pavels Tuliss.')}
+                url="/portfolio"
+            />
+            {/* ИСПРАВЛЕНИЕ 1: Убрал bg-bg-base и overflow-hidden. Добавил w-full и отступы сверху (pt-32), чтобы хедер не перекрывал контент. */}
+            <div className="relative min-h-screen pt-32 pb-16 md:pt-40 md:pb-24 w-full flex flex-col items-center">
 
             {/* ИСПРАВЛЕНИЕ 2: Свечения теперь fixed. Они привязаны к экрану, а не к блоку. Больше не обрезаются! */}
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -244,7 +251,8 @@ const PortfolioPage = () => {
                     </AnimatePresence>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 
