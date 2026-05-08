@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { client, urlFor } from '../../client';
 import SEO from '../SEO.jsx';
 
+const MotionParagraph = motion.p;
+const MotionDiv = motion.div;
+const MotionArticle = motion.article;
+
 const PortfolioPage = () => {
     const { t, i18n } = useTranslation();
     const [activeFilter, setActiveFilter] = useState('all');
@@ -90,7 +94,7 @@ const PortfolioPage = () => {
 
                     <div className="min-h-[80px] md:min-h-[60px] flex items-center justify-center overflow-hidden">
                         <AnimatePresence mode="wait">
-                            <motion.p
+                            <MotionParagraph
                                 key={activeFilter}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -99,7 +103,7 @@ const PortfolioPage = () => {
                                 className="text-lg leading-relaxed text-text-muted md:text-xl"
                             >
                                 {categoryInfo[activeFilter]?.description}
-                            </motion.p>
+                            </MotionParagraph>
                         </AnimatePresence>
                     </div>
                 </div>
@@ -129,14 +133,14 @@ const PortfolioPage = () => {
                 {/* Сетка проектов */}
                 {/* ИСПРАВЛЕНИЕ 3: min-h-[800px] не дает футеру "подпрыгивать" во время исчезновения старых карточек */}
                 <div className="min-h-[800px] w-full">
-                    <motion.div
+                    <MotionDiv
                         layout
                         className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10"
                     >
                         {/* ИСПРАВЛЕНИЕ 4: mode="popLayout" заставляет исчезающие карточки сразу освобождать место для новых, убирая дерганье */}
                         <AnimatePresence mode="popLayout">
                             {filteredProjects.map((project) => (
-                                <motion.article
+                                <MotionArticle
                                     key={project._id}
                                     layout
                                     initial={{ opacity: 0, scale: 0.9 }}
@@ -229,15 +233,15 @@ const PortfolioPage = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </motion.article>
+                                </MotionArticle>
                             ))}
                         </AnimatePresence>
-                    </motion.div>
+                    </MotionDiv>
 
                     {/* Состояние "Пусто" */}
                     <AnimatePresence>
                         {filteredProjects.length === 0 && (
-                            <motion.div
+                            <MotionDiv
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
@@ -246,7 +250,7 @@ const PortfolioPage = () => {
                                 <LayoutGrid className="mx-auto mb-4 h-12 w-12 text-primary/40" />
                                 <h3 className="text-2xl font-bold text-text-main mb-2">{t('portfolio_page.empty_title', 'Empty')}</h3>
                                 <p className="text-text-muted">{t('portfolio_page.empty_desc', 'No projects yet.')}</p>
-                            </motion.div>
+                            </MotionDiv>
                         )}
                     </AnimatePresence>
                 </div>

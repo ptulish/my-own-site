@@ -22,6 +22,10 @@
     "point_2": "I work remotely and flexibly, allowing me to manage projects effectively from anywhere.",
     "point_3": "I create not just a beautiful page, but a clear and functional digital product."
   },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What colleagues and clients say"
+  },
   "features": {
     "badge": "Why choose me",
     "section_title": "An approach that saves businesses time and money",
@@ -43,6 +47,27 @@
     "portfolio_badge": "Featured cases",
     "portfolio_title": "Latest projects",
     "portfolio_link": "View all works"
+  },
+  "seo_content": {
+    "badge": "Frontend Development Services",
+    "title": "Frontend Developer for landing pages, business websites, and React platforms",
+    "intro": "I help founders and teams build fast websites and scalable React products with clear architecture, strong UX, and SEO-friendly implementation from day one.",
+    "items": [
+      {
+        "title": "Landing Page Development",
+        "text": "High-converting landing pages focused on speed, clear messaging, and lead generation."
+      },
+      {
+        "title": "React Frontend Developer",
+        "text": "Modern React interfaces with reusable components, clean code, and maintainable project structure."
+      },
+      {
+        "title": "E-commerce Frontend",
+        "text": "User-friendly storefronts with fast catalog pages, smooth cart flows, and performance-first UI."
+      }
+    ],
+    "cta_portfolio": "View portfolio projects",
+    "cta_story": "Read my story"
   },
   "contact": {
     "badge": "Get in touch",
@@ -207,6 +232,7 @@
     "cta_button": "Discuss project"
   },
   "seo": {
+    "default_description": "I build modern web products and interfaces. Helping businesses launch fast and scalable websites.",
     "home_title": "Home",
     "home_description": "Professional interfaces development from Pavels Tuliss.",
     "portfolio_title": "Portfolio",

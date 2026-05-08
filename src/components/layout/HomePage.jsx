@@ -7,6 +7,7 @@ import PricingSection from "../sections/PricingSection.jsx";
 import FAQSection from "../sections/FAQSection.jsx";
 import HomeSectionNav from "../sections/HomeSectionNav.jsx";
 import Testimonials from "../sections/Testimonials.jsx";
+import SeoIntentSection from "../sections/SeoIntentSection.jsx";
 import SEO from "../SEO.jsx";
 import {useTranslation} from "react-i18next";
 
@@ -35,6 +36,10 @@ const HomePage = () => {
 
             <section id="work">
                 <PortfolioTeaser />
+            </section>
+
+            <section id="seo-content">
+                <SeoIntentSection />
             </section>
 
             <section id="pricing">

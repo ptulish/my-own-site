@@ -7,5 +7,9 @@ export default defineConfig({
         react(),
         tailwindcss(),
     ],
-    base: '/'
+    base: '/',
+    build: {
+        // react-snap runs on an old Chromium runtime, so transpile optional chaining/nullish syntax.
+        target: 'es2018',
+    },
 })

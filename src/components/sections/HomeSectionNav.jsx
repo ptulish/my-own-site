@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
     Sparkles,
     Layers3,
@@ -14,15 +14,18 @@ import { useTranslation } from "react-i18next";
 const HomeSectionNav = () => {
     const { t } = useTranslation();
 
-    const sections = [
-        { id: 'hero', label: t('nav.home', 'Start'), icon: Sparkles },
-        { id: 'features', label: t('nav.why-me', 'Why me'), icon: Layers3 },
-        { id: 'testimonials', label: t('nav.testimonials', 'Testimonials'), icon: MessageSquare },
-        { id: 'work', label: t('nav.work', 'Work'), icon: BriefcaseBusiness },
-        { id: 'pricing', label: t('nav.pricing', 'Pricing'), icon: BadgeEuro },
-        { id: 'faq', label: t('nav.faq', 'FAQ'), icon: CircleHelp },
-        { id: 'contact', label: t('nav.contact', 'Contact'), icon: MessageCircleMore }
-    ];
+    const sections = useMemo(
+        () => [
+            { id: 'hero', label: t('nav.home', 'Start'), icon: Sparkles },
+            { id: 'features', label: t('nav.why-me', 'Why me'), icon: Layers3 },
+            { id: 'testimonials', label: t('nav.testimonials', 'Testimonials'), icon: MessageSquare },
+            { id: 'work', label: t('nav.work', 'Work'), icon: BriefcaseBusiness },
+            { id: 'pricing', label: t('nav.pricing', 'Pricing'), icon: BadgeEuro },
+            { id: 'faq', label: t('nav.faq', 'FAQ'), icon: CircleHelp },
+            { id: 'contact', label: t('nav.contact', 'Contact'), icon: MessageCircleMore }
+        ],
+        [t]
+    );
     const [activeSection, setActiveSection] = useState('hero');
 
     useEffect(() => {
@@ -50,7 +53,7 @@ const HomeSectionNav = () => {
         return () => {
             elements.forEach((el) => observer.unobserve(el));
         };
-    }, []);
+    }, [sections]);
 
     const handleScroll = (id) => {
         const element = document.getElementById(id);

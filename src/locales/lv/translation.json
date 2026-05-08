@@ -22,6 +22,10 @@
     "point_2": "Strādāju attālināti un elastīgi, tāpēc varu efektīvi vadīt projektus no jebkuras vietas.",
     "point_3": "Veidoju nevis vienkārši skaistu lapu, bet saprotamu un strādājošu digitālo produktu."
   },
+  "testimonials": {
+    "badge": "Atsauksmes",
+    "title": "Ko saka kolēģi un klienti"
+  },
   "features": {
     "badge": "Kāpēc izvēlēties mani",
     "section_title": "Pieeja, kas ietaupa biznesa laiku un naudu",
@@ -43,6 +47,27 @@
     "portfolio_badge": "Izvēlētie darbi",
     "portfolio_title": "Jaunākie projekti",
     "portfolio_link": "Skatīt visus darbus"
+  },
+  "seo_content": {
+    "badge": "Frontend izstrādes pakalpojumi",
+    "title": "Frontend izstrādātājs mērķlapām, biznesa mājaslapām un React platformām",
+    "intro": "Palīdzu komandām izveidot ātras vietnes un mērogojamus React produktus ar pārdomātu arhitektūru, ērtu UX un SEO draudzīgu realizāciju jau no pirmās dienas.",
+    "items": [
+      {
+        "title": "Mērķlapu izstrāde",
+        "text": "Ātras mērķlapas ar fokusu uz konversiju, skaidru piedāvājumu un pieteikumu iegūšanu."
+      },
+      {
+        "title": "React Frontend izstrāde",
+        "text": "Mūsdienīgas React saskarnes ar atkārtoti izmantojamiem komponentiem un tīru projekta struktūru."
+      },
+      {
+        "title": "E-komercijas frontend",
+        "text": "Ērtas interneta veikalu saskarnes: ātri katalogi, saprotama groza plūsma un laba veiktspēja."
+      }
+    ],
+    "cta_portfolio": "Skatīt projektus portfelī",
+    "cta_story": "Lasīt manu stāstu"
   },
   "contact": {
     "badge": "Sazināties ar mani",
@@ -207,6 +232,7 @@
     "cta_button": "Apspriedīsim projektu"
   },
   "seo": {
+    "default_description": "Veidoju modernus web produktus un saskarnes. Palīdzu biznesiem palaist ātras un mērogojamas vietnes.",
     "home_title": "Sākums",
     "home_description": "Profesionāla saskarņu izstrāde no Pavels Tuliss.",
     "portfolio_title": "Portfelis",
