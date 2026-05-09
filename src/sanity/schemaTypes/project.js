@@ -31,6 +31,7 @@ export default {
                 list: [
                     { title: 'Лендинг', value: 'landing' },
                     { title: 'Екоммерц', value: 'ecommerce' },
+                    { title: 'Медиа', value: 'media' },
                     // Когда захочешь добавить новый раздел, просто добавь строку сюда:
                     // { title: 'Новый раздел', value: 'new_section' },
                 ],

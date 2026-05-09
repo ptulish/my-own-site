@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, useLocation } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import HomePage from "./components/layout/HomePage.jsx";
 
@@ -17,24 +17,38 @@ const PageLoader = () => (
     </div>
 );
 
+/** Встроенный Sanity Studio плохо переносит React StrictMode в dev (двойной mount). */
+function StrictModeBoundary() {
+  const { pathname } = useLocation();
+  const outlet = <Outlet />;
+  if (pathname.startsWith('/admin')) {
+    return outlet;
+  }
+  return <React.StrictMode>{outlet}</React.StrictMode>;
+}
+
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <MainLayout />,
+    element: <StrictModeBoundary />,
     children: [
-      { path: "/", element: <HomePage /> }, // Главная грузится сразу!
-      // 3. Оборачиваем ленивые роуты в Suspense
-      { path: "/hero", element: <Suspense fallback={<PageLoader />}><Hero /></Suspense> },
-      { path: "/portfolio", element: <Suspense fallback={<PageLoader />}><PortfolioPage /></Suspense> },
-      { path: "/path", element: <Suspense fallback={<PageLoader />}><PathPage /></Suspense> },
-      { path: "/story", element: <Suspense fallback={<PageLoader />}><StoryPage /></Suspense> },
+      {
+        path: "/",
+        element: <MainLayout />,
+        children: [
+          { path: "/", element: <HomePage /> }, // Главная грузится сразу!
+          // 3. Оборачиваем ленивые роуты в Suspense
+          { path: "/hero", element: <Suspense fallback={<PageLoader />}><Hero /></Suspense> },
+          { path: "/portfolio", element: <Suspense fallback={<PageLoader />}><PortfolioPage /></Suspense> },
+          { path: "/path", element: <Suspense fallback={<PageLoader />}><PathPage /></Suspense> },
+          { path: "/story", element: <Suspense fallback={<PageLoader />}><StoryPage /></Suspense> },
+        ],
+      },
+      {
+        path: "/admin/*",
+        element: <Suspense fallback={<PageLoader />}><AdminPage /></Suspense>,
+      },
     ],
   },
-  {
-    // Админка очень тяжелая, теперь ее код не будет грузиться у обычных посетителей сайта
-    path: "/admin/*",
-    element: <Suspense fallback={<PageLoader />}><AdminPage /></Suspense>,
-  }
 ]);
 
 const App = () => {

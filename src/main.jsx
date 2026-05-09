@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import './styles/index.css'
 import App from './App.jsx'
@@ -7,11 +6,9 @@ import {Helmet, HelmetProvider} from "react-helmet-async"; // <-- Добавьт
 
 const rootElement = document.getElementById('root');
 const app = (
-    <StrictMode>
-        <HelmetProvider>
-            <App />
-        </HelmetProvider>
-    </StrictMode>
+    <HelmetProvider>
+        <App />
+    </HelmetProvider>
 );
 
 if (rootElement.hasChildNodes()) {

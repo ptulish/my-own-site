@@ -175,6 +175,10 @@
       "ecommerce": {
         "label": "E-commerce",
         "description": "Full-fledged online stores with catalogs, shopping carts, and a user-friendly interface."
+      },
+      "media": {
+        "label": "Media",
+        "description": "Content-driven sites, blogs, and editorial layouts focused on storytelling."
       }
     }
   },

@@ -175,6 +175,10 @@
       "ecommerce": {
         "label": "E-komercija",
         "description": "Pilnvērtīgi interneta veikali ar katalogiem, grozu un ērtu saskarni."
+      },
+      "media": {
+        "label": "Mediji",
+        "description": "Saturam bagātas vietnes, emuāri un redakcionāli izkārtojumi."
       }
     }
   },

@@ -44,6 +44,10 @@ const PortfolioPage = () => {
         ecommerce: {
             label: t('portfolio_page.categories.ecommerce.label', 'E-commerce'),
             description: t('portfolio_page.categories.ecommerce.description', 'Full-fledged online stores.')
+        },
+        media: {
+            label: t('portfolio_page.categories.media.label', 'Media'),
+            description: t('portfolio_page.categories.media.description', 'Content sites, blogs, and editorial layouts.')
         }
     };
 
