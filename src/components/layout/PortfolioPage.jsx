@@ -45,6 +45,18 @@ const PortfolioPage = () => {
             label: t('portfolio_page.categories.ecommerce.label', 'E-commerce'),
             description: t('portfolio_page.categories.ecommerce.description', 'Full-fledged online stores.')
         },
+        webapp: {
+            label: t('portfolio_page.categories.webapp.label', 'Web apps'),
+            description: t('portfolio_page.categories.webapp.description', 'Interactive web applications with dashboards, forms, and client-side logic.')
+        },
+        saas: {
+            label: t('portfolio_page.categories.saas.label', 'SaaS'),
+            description: t('portfolio_page.categories.saas.description', 'Subscription-style products: accounts, billing flows, and multi-tenant interfaces.')
+        },
+        blog: {
+            label: t('portfolio_page.categories.blog.label', 'Blog'),
+            description: t('portfolio_page.categories.blog.description', 'Editorial sites and blogs focused on articles, tags, and readable typography.')
+        },
         media: {
             label: t('portfolio_page.categories.media.label', 'Media'),
             description: t('portfolio_page.categories.media.description', 'Content sites, blogs, and editorial layouts.')

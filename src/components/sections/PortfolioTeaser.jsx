@@ -33,9 +33,10 @@ const PortfolioTeaser = () => {
     const categoryLabels = {
         landing: t('portfolio_page.categories.landing.label', 'Landing'),
         ecommerce: t('portfolio_page.categories.ecommerce.label', 'E-Commerce'),
+        webapp: t('portfolio_page.categories.webapp.label', 'Web apps'),
+        saas: t('portfolio_page.categories.saas.label', 'SaaS'),
+        blog: t('portfolio_page.categories.blog.label', 'Blog'),
         media: t('portfolio_page.categories.media.label', 'Media'),
-        webapp: 'Web Apps',
-        tools: 'Tools'
     };
 
     if (isLoading) {

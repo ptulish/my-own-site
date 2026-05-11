@@ -31,9 +31,10 @@ export default {
                 list: [
                     { title: 'Лендинг', value: 'landing' },
                     { title: 'Екоммерц', value: 'ecommerce' },
+                    { title: 'Веб-приложение', value: 'webapp' },
+                    { title: 'SaaS', value: 'saas' },
+                    { title: 'Блог', value: 'blog' },
                     { title: 'Медиа', value: 'media' },
-                    // Когда захочешь добавить новый раздел, просто добавь строку сюда:
-                    // { title: 'Новый раздел', value: 'new_section' },
                 ],
             },
             validation: (Rule) => Rule.required(),

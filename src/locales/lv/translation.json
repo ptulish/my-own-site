@@ -176,6 +176,18 @@
         "label": "E-komercija",
         "description": "Pilnvērtīgi interneta veikali ar katalogiem, grozu un ērtu saskarni."
       },
+      "webapp": {
+        "label": "Tīmekļa lietotnes",
+        "description": "Interaktīvas tīmekļa lietotnes ar paneļiem, veidlapām un klienta loģiku."
+      },
+      "saas": {
+        "label": "SaaS",
+        "description": "Abonementa produkti ar kontiem, norēķiniem un vairāku nomnieku saskarnēm."
+      },
+      "blog": {
+        "label": "Emuārs",
+        "description": "Rakstu orientētas vietnes un emuāri ar tagiem un ērtu tipogrāfiju."
+      },
       "media": {
         "label": "Mediji",
         "description": "Saturam bagātas vietnes, emuāri un redakcionāli izkārtojumi."

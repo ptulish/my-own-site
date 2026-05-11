@@ -176,6 +176,18 @@
         "label": "E-commerce",
         "description": "Full-fledged online stores with catalogs, shopping carts, and a user-friendly interface."
       },
+      "webapp": {
+        "label": "Web apps",
+        "description": "Interactive web applications with dashboards, forms, and rich client-side experiences."
+      },
+      "saas": {
+        "label": "SaaS",
+        "description": "Subscription products with accounts, billing, and productized workflows."
+      },
+      "blog": {
+        "label": "Blog",
+        "description": "Article-first sites and blogs with tags, archives, and readable layouts."
+      },
       "media": {
         "label": "Media",
         "description": "Content-driven sites, blogs, and editorial layouts focused on storytelling."
